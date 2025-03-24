@@ -1,12 +1,14 @@
 
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/hooks/useTheme';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,12 +27,16 @@ const Navbar = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
   };
 
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
     <nav
       className={cn(
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         isScrolled 
-          ? 'glass-nav py-3' 
+          ? 'glass-nav dark:glass-nav-dark py-3' 
           : 'bg-transparent py-5'
       )}
     >
@@ -40,7 +46,7 @@ const Navbar = () => {
           className="flex items-center space-x-2"
         >
           <img 
-            src="/lovable-uploads/a35b8538-ada9-4f9a-970c-bb0359d7d00d.png" 
+            src="/logo.png" 
             alt="Sponsify Logo" 
             className="h-8 md:h-10" 
           />
@@ -48,79 +54,103 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
-          <Link to="/" className="text-sm font-medium text-sponsify-secondary hover:text-sponsify-primary transition-colors">
+          <Link to="/" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
             Home
           </Link>
           <div className="relative group">
-            <button className="flex items-center text-sm font-medium text-sponsify-secondary hover:text-sponsify-primary transition-colors">
+            <button className="flex items-center text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
               Solutions <ChevronDown className="ml-1 h-4 w-4" />
             </button>
-            <div className="absolute left-0 mt-2 w-48 rounded-md shadow-md bg-white p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left">
-              <Link to="/" className="block px-4 py-2 text-sm rounded-md hover:bg-sponsify-light">For Brands</Link>
-              <Link to="/" className="block px-4 py-2 text-sm rounded-md hover:bg-sponsify-light">For Creators</Link>
+            <div className="absolute left-0 mt-2 w-48 rounded-md shadow-md bg-white dark:bg-slate-800 p-2 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform origin-top-left">
+              <Link to="/" className="block px-4 py-2 text-sm rounded-md text-sponsify-secondary dark:text-gray-300 hover:bg-sponsify-light dark:hover:bg-slate-700">For Brands</Link>
+              <Link to="/" className="block px-4 py-2 text-sm rounded-md text-sponsify-secondary dark:text-gray-300 hover:bg-sponsify-light dark:hover:bg-slate-700">For Creators</Link>
             </div>
           </div>
-          <Link to="/" className="text-sm font-medium text-sponsify-secondary hover:text-sponsify-primary transition-colors">
+          <Link to="/" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
             Pricing
           </Link>
-          <Link to="/" className="text-sm font-medium text-sponsify-secondary hover:text-sponsify-primary transition-colors">
+          <Link to="/" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
             About
           </Link>
         </div>
 
-        {/* Authentication Buttons */}
+        {/* Authentication Buttons and Theme Toggle */}
         <div className="hidden md:flex items-center space-x-4">
-          <Link to="/" className="btn-tertiary text-sm font-medium">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full text-sponsify-secondary dark:text-gray-300 hover:bg-sponsify-light dark:hover:bg-slate-700 transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </button>
+          <Link to="/" className="btn-tertiary dark:text-sponsify-accent text-sm font-medium">
             Log in
           </Link>
-          <Link to="/" className="btn-primary text-sm font-medium">
+          <Link to="/" className="btn-primary text-sm font-medium dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
             Get Started
           </Link>
         </div>
 
         {/* Mobile Menu Button */}
-        <button 
-          onClick={toggleMobileMenu}
-          className="md:hidden flex items-center"
-        >
-          {isMobileMenuOpen ? (
-            <X className="h-6 w-6 text-sponsify-primary" />
-          ) : (
-            <Menu className="h-6 w-6 text-sponsify-primary" />
-          )}
-        </button>
+        <div className="md:hidden flex items-center space-x-2">
+          <button
+            onClick={toggleTheme}
+            className="p-2 rounded-full text-sponsify-secondary dark:text-gray-300 hover:bg-sponsify-light dark:hover:bg-slate-700 transition-colors"
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </button>
+          <button 
+            onClick={toggleMobileMenu}
+            className="flex items-center"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-sponsify-primary dark:text-sponsify-accent" />
+            ) : (
+              <Menu className="h-6 w-6 text-sponsify-primary dark:text-sponsify-accent" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="md:hidden glass-card absolute top-full left-0 w-full p-4 space-y-4 animate-fade-in">
-          <Link to="/" className="block py-2 text-sponsify-secondary hover:text-sponsify-primary">
+        <div className="md:hidden glass-card dark:glass-card-dark absolute top-full left-0 w-full p-4 space-y-4 animate-fade-in">
+          <Link to="/" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
             Home
           </Link>
           <div>
-            <button className="flex items-center justify-between w-full py-2 text-sponsify-secondary hover:text-sponsify-primary">
+            <button className="flex items-center justify-between w-full py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
               Solutions <ChevronDown className="h-4 w-4" />
             </button>
             <div className="pl-4 mt-1 space-y-2">
-              <Link to="/" className="block py-2 text-sm text-sponsify-secondary hover:text-sponsify-primary">
+              <Link to="/" className="block py-2 text-sm text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
                 For Brands
               </Link>
-              <Link to="/" className="block py-2 text-sm text-sponsify-secondary hover:text-sponsify-primary">
+              <Link to="/" className="block py-2 text-sm text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
                 For Creators
               </Link>
             </div>
           </div>
-          <Link to="/" className="block py-2 text-sponsify-secondary hover:text-sponsify-primary">
+          <Link to="/" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
             Pricing
           </Link>
-          <Link to="/" className="block py-2 text-sponsify-secondary hover:text-sponsify-primary">
+          <Link to="/" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
             About
           </Link>
           <div className="pt-4 space-y-3">
-            <Link to="/" className="block w-full text-center py-2 text-sponsify-primary hover:bg-sponsify-light rounded-md">
+            <Link to="/" className="block w-full text-center py-2 text-sponsify-primary dark:text-sponsify-accent hover:bg-sponsify-light dark:hover:bg-slate-700 rounded-md">
               Log in
             </Link>
-            <Link to="/" className="block w-full text-center btn-primary">
+            <Link to="/" className="block w-full text-center btn-primary dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
               Get Started
             </Link>
           </div>
