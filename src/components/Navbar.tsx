@@ -39,7 +39,11 @@ const Navbar = () => {
           to="/" 
           className="flex items-center space-x-2"
         >
-          <span className="text-xl font-bold text-sponsify-primary">Sponsify</span>
+          <img 
+            src="/lovable-uploads/a35b8538-ada9-4f9a-970c-bb0359d7d00d.png" 
+            alt="Sponsify Logo" 
+            className="h-8 md:h-10" 
+          />
         </Link>
 
         {/* Desktop Navigation */}

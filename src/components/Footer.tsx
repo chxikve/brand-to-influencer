@@ -10,7 +10,11 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <span className="text-xl font-bold text-sponsify-primary">Sponsify</span>
+              <img 
+                src="/lovable-uploads/a35b8538-ada9-4f9a-970c-bb0359d7d00d.png" 
+                alt="Sponsify Logo" 
+                className="h-10" 
+              />
             </Link>
             <p className="text-sponsify-secondary mb-6 max-w-md">
               Connecting brands and creators through an innovative sponsorship marketplace. Simplify your sponsorship management with Sponsify.
