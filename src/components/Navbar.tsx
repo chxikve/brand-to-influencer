@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/hooks/useTheme';
+import { Button } from '@/components/ui/button'; 
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -48,7 +49,7 @@ const Navbar = () => {
           <img 
             src="/logo.png" 
             alt="Sponsify Logo" 
-            className="h-8 md:h-10" 
+            className="h-8 md:h-10 w-auto" 
           />
         </Link>
 
@@ -76,9 +77,11 @@ const Navbar = () => {
 
         {/* Authentication Buttons and Theme Toggle */}
         <div className="hidden md:flex items-center space-x-4">
-          <button
+          <Button
             onClick={toggleTheme}
-            className="p-2 rounded-full text-sponsify-secondary dark:text-gray-300 hover:bg-sponsify-light dark:hover:bg-slate-700 transition-colors"
+            variant="ghost"
+            size="icon"
+            className="text-sponsify-secondary dark:text-gray-300"
             aria-label="Toggle dark mode"
           >
             {theme === 'dark' ? (
@@ -86,20 +89,26 @@ const Navbar = () => {
             ) : (
               <Moon className="h-5 w-5" />
             )}
-          </button>
-          <Link to="/" className="btn-tertiary dark:text-sponsify-accent text-sm font-medium">
-            Log in
-          </Link>
-          <Link to="/" className="btn-primary text-sm font-medium dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
-            Get Started
-          </Link>
+          </Button>
+          <Button variant="ghost" asChild>
+            <Link to="/" className="text-sponsify-secondary dark:text-sponsify-accent text-sm font-medium">
+              Log in
+            </Link>
+          </Button>
+          <Button variant="default" asChild>
+            <Link to="/" className="text-sm font-medium dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
+              Get Started
+            </Link>
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center space-x-2">
-          <button
+          <Button
             onClick={toggleTheme}
-            className="p-2 rounded-full text-sponsify-secondary dark:text-gray-300 hover:bg-sponsify-light dark:hover:bg-slate-700 transition-colors"
+            variant="ghost"
+            size="icon"
+            className="text-sponsify-secondary dark:text-gray-300"
             aria-label="Toggle dark mode"
           >
             {theme === 'dark' ? (
@@ -107,17 +116,18 @@ const Navbar = () => {
             ) : (
               <Moon className="h-5 w-5" />
             )}
-          </button>
-          <button 
+          </Button>
+          <Button 
             onClick={toggleMobileMenu}
-            className="flex items-center"
+            variant="ghost"
+            size="icon"
           >
             {isMobileMenuOpen ? (
               <X className="h-6 w-6 text-sponsify-primary dark:text-sponsify-accent" />
             ) : (
               <Menu className="h-6 w-6 text-sponsify-primary dark:text-sponsify-accent" />
             )}
-          </button>
+          </Button>
         </div>
       </div>
 
@@ -147,12 +157,16 @@ const Navbar = () => {
             About
           </Link>
           <div className="pt-4 space-y-3">
-            <Link to="/" className="block w-full text-center py-2 text-sponsify-primary dark:text-sponsify-accent hover:bg-sponsify-light dark:hover:bg-slate-700 rounded-md">
-              Log in
-            </Link>
-            <Link to="/" className="block w-full text-center btn-primary dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
-              Get Started
-            </Link>
+            <Button variant="ghost" className="w-full justify-center" asChild>
+              <Link to="/" className="block text-sponsify-primary dark:text-sponsify-accent">
+                Log in
+              </Link>
+            </Button>
+            <Button variant="default" className="w-full justify-center dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90" asChild>
+              <Link to="/" className="block">
+                Get Started
+              </Link>
+            </Button>
           </div>
         </div>
       )}

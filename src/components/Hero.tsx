@@ -2,6 +2,7 @@
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
 
 const Hero = () => {
   return (
@@ -16,12 +17,16 @@ const Hero = () => {
               Sponsify simplifies sponsorship management with our innovative marketplace. Find perfect partnerships and grow together.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/" className="btn-primary inline-flex items-center justify-center">
-                Get Started <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link to="/" className="btn-secondary inline-flex items-center justify-center">
-                Learn More
-              </Link>
+              <Button size="lg" asChild>
+                <Link to="/" className="inline-flex items-center justify-center">
+                  Get Started <ArrowRight className="ml-2 h-5 w-5" />
+                </Link>
+              </Button>
+              <Button variant="outline" size="lg" asChild>
+                <Link to="/" className="inline-flex items-center justify-center">
+                  Learn More
+                </Link>
+              </Button>
             </div>
           </div>
           

@@ -27,13 +27,14 @@ const Index = () => {
     };
     
     window.addEventListener('scroll', animateOnScroll);
-    animateOnScroll(); // Check elements on page load
+    // Call once on initial load to animate elements already in view
+    setTimeout(animateOnScroll, 100);
     
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
   
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
         <Hero />
