@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, Moon, Sun } from 'lucide-react';
@@ -46,14 +45,9 @@ const Navbar = () => {
           to="/" 
           className="flex items-center space-x-2"
         >
-          <img 
-            src="/logo.png" 
-            alt="Sponsify Logo" 
-            className="h-8 md:h-10 w-auto" 
-          />
+          <span className="text-xl font-bold text-sponsify-primary dark:text-sponsify-accent">SPONSIFY</span>
         </Link>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
             Home
@@ -75,7 +69,6 @@ const Navbar = () => {
           </Link>
         </div>
 
-        {/* Authentication Buttons and Theme Toggle */}
         <div className="hidden md:flex items-center space-x-4">
           <Button
             onClick={toggleTheme}
@@ -102,7 +95,6 @@ const Navbar = () => {
           </Button>
         </div>
 
-        {/* Mobile Menu Button */}
         <div className="md:hidden flex items-center space-x-2">
           <Button
             onClick={toggleTheme}
@@ -131,7 +123,6 @@ const Navbar = () => {
         </div>
       </div>
 
-      {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="md:hidden glass-card dark:glass-card-dark absolute top-full left-0 w-full p-4 space-y-4 animate-fade-in">
           <Link to="/" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">

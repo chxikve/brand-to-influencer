@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
@@ -10,11 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
           <div className="lg:col-span-2">
             <Link to="/" className="inline-block mb-6">
-              <img 
-                src="/logo.png" 
-                alt="Sponsify Logo" 
-                className="h-10" 
-              />
+              <span className="text-xl font-bold text-sponsify-primary dark:text-sponsify-accent">SPONSIFY</span>
             </Link>
             <p className="text-sponsify-secondary dark:text-gray-400 mb-6 max-w-md">
               Connecting brands and creators through an innovative sponsorship marketplace. Simplify your sponsorship management with Sponsify.
