@@ -8,7 +8,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Eye, EyeOff } from 'lucide-react';
+import { Eye, EyeOff, ArrowLeft } from 'lucide-react';
 
 const registerSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
@@ -61,10 +61,24 @@ const Register = () => {
       });
     }
   };
+
+  const handleGoBack = () => {
+    navigate(-1);
+  };
   
   return (
     <div className="min-h-screen flex items-center justify-center bg-background px-4">
-      <div className="w-full max-w-md space-y-8 p-8 bg-white dark:bg-slate-800 rounded-lg shadow-lg">
+      <div className="w-full max-w-md space-y-8 p-8 bg-white dark:bg-slate-800 rounded-lg shadow-lg relative">
+        <Button 
+          variant="ghost" 
+          size="icon" 
+          className="absolute top-4 left-4" 
+          onClick={handleGoBack}
+          aria-label="Go back"
+        >
+          <ArrowLeft className="h-5 w-5" />
+        </Button>
+        
         <div className="text-center">
           <h2 className="text-3xl font-bold text-sponsify-primary dark:text-white">Create an account</h2>
           <p className="mt-2 text-sm text-sponsify-secondary dark:text-gray-400">
