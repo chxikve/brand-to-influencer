@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Star, Camera, Youtube, Palette } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
@@ -10,23 +10,51 @@ const Hero = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 items-center">
           <div className="animate-on-scroll">
+            <div className="flex items-center gap-2 mb-4">
+              <div className="bg-sponsify-primary/10 dark:bg-sponsify-primary/20 text-sponsify-primary dark:text-sponsify-accent px-3 py-1 rounded-full text-sm font-medium inline-flex items-center">
+                <Star className="w-4 h-4 mr-1" /> For Creators
+              </div>
+            </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Connect <span className="text-gradient">Brands</span> with <span className="text-gradient">Creators</span> Seamlessly
+              Monetize Your <span className="text-gradient">Creativity</span> With Brand <span className="text-gradient">Partnerships</span>
             </h1>
             <p className="text-sponsify-secondary dark:text-gray-300 text-lg mb-8 max-w-lg">
-              Sponsify simplifies sponsorship management with our innovative marketplace. Find perfect partnerships and grow together.
+              Join thousands of creators who use Sponsify to find and manage brand deals, negotiate better rates, and grow their creative business.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button size="lg" asChild>
-                <Link to="/" className="inline-flex items-center justify-center">
+              <Button size="lg" asChild className="bg-sponsify-primary hover:bg-sponsify-primary/90 dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
+                <Link to="/register" className="inline-flex items-center justify-center">
                   Get Started <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
                 <Link to="/" className="inline-flex items-center justify-center">
-                  Learn More
+                  See Success Stories
                 </Link>
               </Button>
+            </div>
+            
+            <div className="mt-8 flex items-center space-x-4">
+              <div className="flex -space-x-3">
+                <img 
+                  src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                  alt="Creator" 
+                  className="w-9 h-9 rounded-full border-2 border-white dark:border-gray-800"
+                />
+                <img 
+                  src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                  alt="Creator" 
+                  className="w-9 h-9 rounded-full border-2 border-white dark:border-gray-800"
+                />
+                <img 
+                  src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
+                  alt="Creator" 
+                  className="w-9 h-9 rounded-full border-2 border-white dark:border-gray-800"
+                />
+              </div>
+              <p className="text-sm text-sponsify-secondary dark:text-gray-400">
+                <span className="font-medium text-foreground">2,500+</span> creators already joined
+              </p>
             </div>
           </div>
           
@@ -34,17 +62,46 @@ const Hero = () => {
             <div className="relative">
               <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                 <img 
-                  src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Sponsify Platform" 
+                  src="https://images.unsplash.com/photo-1616469829941-c7200edec809?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                  alt="Creator with camera" 
                   className="w-full h-auto rounded-lg shadow-lg"
                 />
               </div>
+              
               <div className="absolute -bottom-12 -left-12 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float">
-                <img 
-                  src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80" 
-                  alt="Creator Dashboard" 
-                  className="w-48 h-auto rounded-lg"
-                />
+                <div className="flex items-center gap-3 p-1">
+                  <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
+                    <Camera className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">Photography</p>
+                    <p className="text-xs text-sponsify-secondary dark:text-gray-400">240+ brands</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="absolute top-10 -right-8 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "1s"}}>
+                <div className="flex items-center gap-3 p-1">
+                  <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
+                    <Youtube className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">Video Content</p>
+                    <p className="text-xs text-sponsify-secondary dark:text-gray-400">370+ brands</p>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="absolute bottom-20 right-10 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "2s"}}>
+                <div className="flex items-center gap-3 p-1">
+                  <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
+                    <Palette className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
+                  </div>
+                  <div>
+                    <p className="text-sm font-semibold">Digital Art</p>
+                    <p className="text-xs text-sponsify-secondary dark:text-gray-400">180+ brands</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
