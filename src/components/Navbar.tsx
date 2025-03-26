@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { Menu, X, ChevronDown, Moon, Sun } from 'lucide-react';
@@ -29,6 +30,14 @@ const Navbar = () => {
 
   const toggleTheme = () => {
     setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
+
+  const scrollToAbout = () => {
+    const aboutSection = document.getElementById('about');
+    if (aboutSection) {
+      aboutSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -64,9 +73,12 @@ const Navbar = () => {
           <Link to="/" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
             Pricing
           </Link>
-          <Link to="/" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
+          <button 
+            onClick={scrollToAbout}
+            className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors cursor-pointer"
+          >
             About
-          </Link>
+          </button>
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
@@ -84,12 +96,12 @@ const Navbar = () => {
             )}
           </Button>
           <Button variant="ghost" asChild>
-            <Link to="/" className="text-sponsify-secondary dark:text-sponsify-accent text-sm font-medium">
+            <Link to="/login" className="text-sponsify-secondary dark:text-sponsify-accent text-sm font-medium">
               Log in
             </Link>
           </Button>
           <Button variant="default" asChild>
-            <Link to="/" className="text-sm font-medium dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
+            <Link to="/register" className="text-sm font-medium dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
               Get Started
             </Link>
           </Button>
@@ -144,17 +156,20 @@ const Navbar = () => {
           <Link to="/" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
             Pricing
           </Link>
-          <Link to="/" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
+          <button 
+            onClick={scrollToAbout}
+            className="block py-2 w-full text-left text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent cursor-pointer"
+          >
             About
-          </Link>
+          </button>
           <div className="pt-4 space-y-3">
             <Button variant="ghost" className="w-full justify-center" asChild>
-              <Link to="/" className="block text-sponsify-primary dark:text-sponsify-accent">
+              <Link to="/login" className="block text-sponsify-primary dark:text-sponsify-accent">
                 Log in
               </Link>
             </Button>
             <Button variant="default" className="w-full justify-center dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90" asChild>
-              <Link to="/" className="block">
+              <Link to="/register" className="block">
                 Get Started
               </Link>
             </Button>
