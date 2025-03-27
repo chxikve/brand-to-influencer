@@ -6,6 +6,7 @@ import FeaturedSponsors from '@/components/FeaturedSponsors';
 import HowItWorks from '@/components/HowItWorks';
 import About from '@/components/About';
 import Testimonials from '@/components/Testimonials';
+import CreatorProfiles from '@/components/CreatorProfiles';
 import Footer from '@/components/Footer';
 
 const Index = () => {
@@ -41,6 +42,7 @@ const Index = () => {
         <Hero />
         <FeaturedSponsors />
         <HowItWorks />
+        <CreatorProfiles />
         <About />
         <Testimonials />
       </main>
