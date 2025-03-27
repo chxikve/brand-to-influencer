@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { 
   TrendingUp, 
   MessageSquare, 
@@ -17,6 +18,7 @@ import {
   CardDescription, 
   CardFooter 
 } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
@@ -24,6 +26,7 @@ import { AreaChart, Area, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 const CreatorProfiles = () => {
   const creators = [
     {
+      id: "alex-rivera",
       name: "Alex Rivera",
       handle: "@alexcreates",
       avatar: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80",
@@ -45,6 +48,7 @@ const CreatorProfiles = () => {
       description: "Tech reviewer and gaming streamer with a focus on honest product reviews and competitive gaming."
     },
     {
+      id: "sophia-chen",
       name: "Sophia Chen",
       handle: "@sophialifestyle",
       avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80",
@@ -66,6 +70,7 @@ const CreatorProfiles = () => {
       description: "Fashion creator sharing sustainable style tips and behind-the-scenes looks at the fashion industry."
     },
     {
+      id: "marcus-johnson",
       name: "Marcus Johnson",
       handle: "@marcusfitness",
       avatar: "https://images.unsplash.com/photo-1504257432389-52343af06ae3?ixlib=rb-4.0.3&auto=format&fit=crop&w=120&q=80",
@@ -225,9 +230,15 @@ const CreatorProfiles = () => {
                   <Star className="h-4 w-4 text-yellow-400 fill-yellow-400 mr-1" />
                   <span className="text-sm font-medium">Top {index + 1}% Creator</span>
                 </div>
-                <button className="text-sm font-medium text-primary hover:underline">
-                  View Profile
-                </button>
+                <Button
+                  variant="ghost"
+                  className="text-sm font-medium text-primary hover:underline"
+                  asChild
+                >
+                  <Link to={`/creator/${creator.id}`}>
+                    View Profile
+                  </Link>
+                </Button>
               </CardFooter>
             </Card>
           ))}
