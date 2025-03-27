@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -19,7 +18,7 @@ import { Button } from '@/components/ui/button';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { AreaChart, Area, XAxis, YAxis } from 'recharts';
-import { Creator, getPlatformIcon, formatFollowers } from '@/data/creators';
+import { Creator, platformIcons, formatFollowers } from '@/data/creators';
 
 interface CreatorCardProps {
   creator: Creator;
@@ -44,11 +43,17 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
             </div>
           </div>
           <div className="flex gap-1">
-            {creator.platforms.map((platform, i) => (
-              <span key={i} className="inline-block">
-                {getPlatformIcon(platform)}
-              </span>
-            ))}
+            {creator.platforms.map((platform, i) => {
+              const iconInfo = platformIcons[platform as keyof typeof platformIcons];
+              if (!iconInfo) return null;
+              
+              const IconComponent = iconInfo.icon;
+              return (
+                <span key={i} className="inline-block">
+                  <IconComponent size={18} className={`text-[${iconInfo.color}]`} />
+                </span>
+              );
+            })}
           </div>
         </div>
       </CardHeader>

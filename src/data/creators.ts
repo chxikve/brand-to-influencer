@@ -86,17 +86,11 @@ export const creators: Creator[] = [
   }
 ];
 
-export const getPlatformIcon = (platform: string) => {
-  switch (platform) {
-    case 'instagram':
-      return <Instagram size={18} className="text-[#E1306C]" />;
-    case 'youtube':
-      return <Youtube size={18} className="text-[#FF0000]" />;
-    case 'twitter':
-      return <Twitter size={18} className="text-[#1DA1F2]" />;
-    default:
-      return null;
-  }
+// Instead of returning JSX elements directly, let's return a mapping object
+export const platformIcons = {
+  instagram: { icon: Instagram, color: "#E1306C" },
+  youtube: { icon: Youtube, color: "#FF0000" },
+  twitter: { icon: Twitter, color: "#1DA1F2" }
 };
 
 export const formatFollowers = (value: number) => {
