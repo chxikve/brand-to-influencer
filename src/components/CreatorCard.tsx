@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -26,6 +27,11 @@ interface CreatorCardProps {
 }
 
 const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
+  // Format number for YAxis
+  const formatYAxis = (value: any): string => {
+    return formatFollowers(Number(value)).toString();
+  };
+
   return (
     <Card className="overflow-hidden animate-on-scroll hover-scale" style={{ animationDelay: `${index * 100}ms` }}>
       <CardHeader className="pb-2">
@@ -50,7 +56,7 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
               const IconComponent = iconInfo.icon;
               return (
                 <span key={i} className="inline-block">
-                  <IconComponent size={18} className={`text-[${iconInfo.color}]`} />
+                  <IconComponent size={18} style={{ color: iconInfo.color }} />
                 </span>
               );
             })}
@@ -86,7 +92,7 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
               />
               <YAxis 
                 tick={{ fontSize: 10 }}
-                tickFormatter={formatFollowers}
+                tickFormatter={formatYAxis}
                 tickLine={false}
                 axisLine={false}
                 width={30}

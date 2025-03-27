@@ -1,7 +1,9 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import CreatorCard from './CreatorCard';
 import { creators } from '@/data/creators';
+import { Button } from '@/components/ui/button';
 
 const CreatorProfiles = () => {
   return (
@@ -25,9 +27,16 @@ const CreatorProfiles = () => {
         </div>
         
         <div className="mt-12 text-center animate-on-scroll">
-          <a href="#" className="btn-primary inline-flex items-center justify-center">
-            Discover More Creators
-          </a>
+          <Button
+            variant="default"
+            size="lg"
+            className="inline-flex items-center justify-center"
+            asChild
+          >
+            <Link to="/more-creators">
+              Discover More Creators
+            </Link>
+          </Button>
         </div>
       </div>
     </section>
