@@ -146,7 +146,8 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
           </div>
         </div>
         
-        {creator.expertiseOrTopCategories && (
+        {/* Fix for the expertise/topCategories rendering */}
+        {(creator.expertise || creator.topCategories) && (
           <div className="mt-4">
             <p className="text-xs text-gray-500 mb-2">Expertise</p>
             <div className="flex flex-wrap gap-1">
