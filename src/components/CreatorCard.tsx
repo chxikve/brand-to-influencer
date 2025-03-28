@@ -5,7 +5,8 @@ import {
   TrendingUp, 
   MessageSquare, 
   Users, 
-  Star
+  Star,
+  Share2
 } from 'lucide-react';
 import { 
   Card, 
@@ -46,6 +47,9 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
               <CardDescription className="text-sm">
                 {creator.handle} · {creator.niche}
               </CardDescription>
+              {creator.location && (
+                <p className="text-xs text-muted-foreground mt-1">{creator.location}</p>
+              )}
             </div>
           </div>
           <div className="flex gap-1">
@@ -111,7 +115,7 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
           </ChartContainer>
         </div>
         
-        <div className="grid grid-cols-3 gap-2 mt-4">
+        <div className="grid grid-cols-4 gap-2 mt-4">
           <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
             <div className="flex items-center gap-1 mb-1">
               <Users size={14} className="text-gray-500" />
@@ -133,7 +137,27 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
             </div>
             <p className="font-semibold">{creator.avgComments}</p>
           </div>
+          <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
+            <div className="flex items-center gap-1 mb-1">
+              <Share2 size={14} className="text-gray-500" />
+              <span className="text-xs text-gray-500">Shares</span>
+            </div>
+            <p className="font-semibold">{creator.avgShares || "N/A"}</p>
+          </div>
         </div>
+        
+        {creator.expertiseOrTopCategories && (
+          <div className="mt-4">
+            <p className="text-xs text-gray-500 mb-2">Expertise</p>
+            <div className="flex flex-wrap gap-1">
+              {(creator.expertise || creator.topCategories || []).slice(0, 3).map((item, i) => (
+                <span key={i} className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
+        )}
       </CardContent>
       
       <CardFooter className="border-t pt-4 flex justify-between">

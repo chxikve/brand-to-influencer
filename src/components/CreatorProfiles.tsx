@@ -13,6 +13,7 @@ const CreatorProfiles = () => {
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Top Creators on Our Platform</h2>
           <p className="text-sponsify-secondary dark:text-gray-300">
             Connect with influential content creators who are already finding success through Sponsify.
+            Browse our network of verified creators across various niches.
           </p>
         </div>
         

@@ -12,6 +12,7 @@ import Register from "./pages/Register";
 import NotFound from "./pages/NotFound";
 import CreatorProfile from "./pages/CreatorProfile";
 import MoreCreators from "./pages/MoreCreators";
+import ForBrands from "./pages/ForBrands";
 
 const queryClient = new QueryClient();
 
@@ -29,6 +30,7 @@ const App = () => (
               <Route path="/register" element={<Register />} />
               <Route path="/creator/:id" element={<CreatorProfile />} />
               <Route path="/more-creators" element={<MoreCreators />} />
+              <Route path="/for-brands" element={<ForBrands />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
