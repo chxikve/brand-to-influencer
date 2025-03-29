@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
@@ -11,14 +10,19 @@ import {
   MapPin, 
   ArrowRight, 
   CheckCircle2,
-  DollarSign
+  DollarSign,
+  Award,
+  Star,
+  BadgePercent,
+  BadgeDollarSign,
+  Handshake,
+  Gift
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from '@/components/ui/card';
 import { creators } from '@/data/creators';
 import { Link } from 'react-router-dom';
 
-// Filter options for each section
 const eventFilterOptions = [
   { label: 'All Events', value: 'all' },
   { label: 'In-Person', value: 'in-person' },
@@ -45,7 +49,6 @@ const locationFilterOptions = [
   { label: 'Entertainment Venues', value: 'entertainment' },
 ];
 
-// Sample events data
 const eventsData = [
   {
     id: 1,
@@ -127,7 +130,6 @@ const eventsData = [
   }
 ];
 
-// Sample physical advertising locations
 const advertisingLocations = [
   {
     title: "Retail Stores",
@@ -159,17 +161,14 @@ const advertisingLocations = [
 ];
 
 const ForBrands = () => {
-  // State for filters
   const [eventFilter, setEventFilter] = useState('all');
   const [creatorFilter, setCreatorFilter] = useState('all');
   const [locationFilter, setLocationFilter] = useState('all');
   
-  // State for search
   const [eventSearch, setEventSearch] = useState('');
   const [creatorSearch, setCreatorSearch] = useState('');
   const [locationSearch, setLocationSearch] = useState('');
 
-  // Filtered creators based on search and filter
   const filteredCreators = creators
     .filter(creator => {
       if (creatorFilter !== 'all' && creator.niche.toLowerCase() !== creatorFilter) {
@@ -182,7 +181,6 @@ const ForBrands = () => {
     })
     .slice(0, 3);
 
-  // Filter events based on search and filter
   const filteredEvents = eventsData.filter(event => {
     if (eventFilter !== 'all') {
       if (eventFilter === 'in-person' && event.type !== 'in-person') return false;
@@ -203,7 +201,6 @@ const ForBrands = () => {
     return true;
   });
 
-  // Filter locations based on search and filter
   const filteredLocations = advertisingLocations.filter(location => {
     if (locationFilter !== 'all') {
       const categoryMatches = 
@@ -228,10 +225,8 @@ const ForBrands = () => {
   });
 
   useEffect(() => {
-    // Scroll to top on page load
     window.scrollTo(0, 0);
     
-    // Animate elements that come into view
     const animateOnScroll = () => {
       const elements = document.querySelectorAll('.animate-on-scroll');
       
@@ -246,17 +241,43 @@ const ForBrands = () => {
     };
     
     window.addEventListener('scroll', animateOnScroll);
-    // Call once on initial load to animate elements already in view
     setTimeout(animateOnScroll, 100);
     
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
 
+  const sponsorBenefits = [
+    {
+      title: "Brand Exposure",
+      description: "Gain visibility and exposure to your target audience through various channels associated with the sponsored entity.",
+      icon: <Star className="h-8 w-8 text-amber-500" />
+    },
+    {
+      title: "Brand Association",
+      description: "Align your brand with the values and image of the sponsored entity, enhancing your brand perception.",
+      icon: <Handshake className="h-8 w-8 text-blue-500" />
+    },
+    {
+      title: "Marketing Opportunities",
+      description: "Leverage platforms for product promotion, customer engagement, and market expansion.",
+      icon: <Award className="h-8 w-8 text-purple-500" />
+    },
+    {
+      title: "Corporate Social Responsibility",
+      description: "Sponsorship of charitable or community events aligns with CSR goals, improving brand reputation.",
+      icon: <Gift className="h-8 w-8 text-green-500" />
+    },
+    {
+      title: "Audience Reach",
+      description: "Access extensive networks and marketing channels, enabling your brand to reach a broader audience.",
+      icon: <BadgePercent className="h-8 w-8 text-red-500" />
+    }
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        {/* Hero Section */}
         <section className="py-20 bg-gradient-to-b from-gray-900 to-gray-800 text-white">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center animate-on-scroll">
@@ -271,7 +292,35 @@ const ForBrands = () => {
           </div>
         </section>
 
-        {/* How Sponsify Works Section */}
+        <section className="py-20 bg-gray-50 dark:bg-gray-900/50">
+          <div className="container mx-auto px-4">
+            <div className="text-center max-w-3xl mx-auto mb-12 animate-on-scroll">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">Benefits for Brands</h2>
+              <p className="text-sponsify-secondary dark:text-gray-300 mb-6">
+                Discover the advantages of partnering with creators through our platform
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {sponsorBenefits.map((benefit, index) => (
+                <Card key={index} className="animate-on-scroll hover-scale" style={{ animationDelay: `${index * 100}ms` }}>
+                  <CardHeader>
+                    <div className="flex justify-center mb-4">
+                      {benefit.icon}
+                    </div>
+                    <CardTitle className="text-xl text-center">{benefit.title}</CardTitle>
+                  </CardHeader>
+                  <CardContent>
+                    <p className="text-center text-muted-foreground">
+                      {benefit.description}
+                    </p>
+                  </CardContent>
+                </Card>
+              ))}
+            </div>
+          </div>
+        </section>
+
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-16 animate-on-scroll">
@@ -327,7 +376,6 @@ const ForBrands = () => {
           </div>
         </section>
 
-        {/* Featured Creators Section */}
         <section className="py-20 bg-gray-50 dark:bg-gray-900/50">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-8 animate-on-scroll">
@@ -407,7 +455,6 @@ const ForBrands = () => {
           </div>
         </section>
 
-        {/* Upcoming Events Section */}
         <section className="py-20">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-8 animate-on-scroll">
@@ -473,7 +520,6 @@ const ForBrands = () => {
           </div>
         </section>
 
-        {/* Advertising Locations Section */}
         <section className="py-20 bg-gray-50 dark:bg-gray-900/50">
           <div className="container mx-auto px-4">
             <div className="text-center max-w-2xl mx-auto mb-8 animate-on-scroll">
@@ -520,7 +566,6 @@ const ForBrands = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
         <section className="py-20 bg-primary text-primary-foreground">
           <div className="container mx-auto px-4">
             <div className="max-w-3xl mx-auto text-center">
