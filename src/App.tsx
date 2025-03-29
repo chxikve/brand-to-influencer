@@ -15,6 +15,7 @@ import MoreCreators from "./pages/MoreCreators";
 import ForBrands from "./pages/ForBrands";
 import ForCreators from "./pages/ForCreators";
 import Pricing from "./pages/Pricing";
+import Analytics from "./pages/Analytics";
 
 const queryClient = new QueryClient();
 
@@ -35,6 +36,7 @@ const App = () => (
               <Route path="/for-brands" element={<ForBrands />} />
               <Route path="/for-creators" element={<ForCreators />} />
               <Route path="/pricing" element={<Pricing />} />
+              <Route path="/analytics" element={<Analytics />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />
             </Routes>
