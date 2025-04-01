@@ -27,7 +27,7 @@ const AppRoutes = () => {
   
   return (
     <>
-      {!isHomePage && <Header />}
+      <Header />
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/login" element={<Login />} />

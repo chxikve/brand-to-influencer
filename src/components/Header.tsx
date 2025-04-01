@@ -43,6 +43,9 @@ const Header = () => {
             <Link to="/more-creators" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
               Discover Creators
             </Link>
+            <Link to="/analytics" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
+              Analytics
+            </Link>
           </nav>
         </div>
         

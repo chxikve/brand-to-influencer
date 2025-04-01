@@ -28,8 +28,8 @@ const Hero = () => {
                 </Link>
               </Button>
               <Button variant="outline" size="lg" asChild>
-                <Link to="/" className="inline-flex items-center justify-center">
-                  See Success Stories
+                <Link to="/analytics" className="inline-flex items-center justify-center">
+                  View Analytics
                 </Link>
               </Button>
             </div>
