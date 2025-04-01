@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import Navbar from '@/components/Navbar';
+import Navbar from '@/components/navbar';
 import Hero from '@/components/Hero';
 import FeaturedSponsors from '@/components/FeaturedSponsors';
 import HowItWorks from '@/components/HowItWorks';
