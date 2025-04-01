@@ -1,20 +1,45 @@
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BarChart3, Zap } from 'lucide-react';
+import { BarChart3, Zap, Menu, X, ChevronDown, Moon, Sun } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useTheme } from '@/hooks/useTheme';
 import { Button } from '@/components/ui/button';
 
 const Header = () => {
-  const { theme } = useTheme();
+  const { theme, setTheme } = useTheme();
   const location = useLocation();
-  const isScrolled = true; // Always apply scrolled styling for consistency
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
   // Don't render on homepage
   if (location.pathname === '/') {
     return null;
   }
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 10) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    // Set initial state
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  const toggleTheme = () => {
+    setTheme(theme === 'dark' ? 'light' : 'dark');
+  };
   
   return (
     <header className={cn(
@@ -49,12 +74,19 @@ const Header = () => {
           </nav>
         </div>
         
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost" size="sm" asChild className="hidden md:flex text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
-            <Link to="/analytics" className="flex items-center gap-1">
-              <BarChart3 className="h-4 w-4" />
-              <span>Analytics</span>
-            </Link>
+        <div className="hidden md:flex items-center space-x-4">
+          <Button
+            onClick={toggleTheme}
+            variant="ghost"
+            size="icon"
+            className="text-sponsify-secondary dark:text-gray-300"
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
           </Button>
           
           <Button variant="ghost" size="sm" asChild className="text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
@@ -65,7 +97,68 @@ const Header = () => {
             <Link to="/register">Get Started</Link>
           </Button>
         </div>
+        
+        {/* Mobile menu button */}
+        <div className="md:hidden flex items-center space-x-2">
+          <Button
+            onClick={toggleTheme}
+            variant="ghost"
+            size="icon"
+            className="text-sponsify-secondary dark:text-gray-300"
+            aria-label="Toggle dark mode"
+          >
+            {theme === 'dark' ? (
+              <Sun className="h-5 w-5" />
+            ) : (
+              <Moon className="h-5 w-5" />
+            )}
+          </Button>
+          <Button 
+            onClick={toggleMobileMenu}
+            variant="ghost"
+            size="icon"
+          >
+            {isMobileMenuOpen ? (
+              <X className="h-6 w-6 text-sponsify-primary dark:text-sponsify-accent" />
+            ) : (
+              <Menu className="h-6 w-6 text-sponsify-primary dark:text-sponsify-accent" />
+            )}
+          </Button>
+        </div>
       </div>
+
+      {/* Mobile menu */}
+      {isMobileMenuOpen && (
+        <div className="md:hidden glass-card dark:glass-card-dark absolute top-full left-0 w-full p-4 space-y-4 animate-fade-in">
+          <Link to="/for-brands" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
+            For Brands
+          </Link>
+          <Link to="/for-creators" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
+            For Creators
+          </Link>
+          <Link to="/pricing" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
+            Pricing
+          </Link>
+          <Link to="/more-creators" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
+            Discover Creators
+          </Link>
+          <Link to="/analytics" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
+            Analytics
+          </Link>
+          <div className="pt-4 space-y-3">
+            <Button variant="ghost" className="w-full justify-center" asChild>
+              <Link to="/login" className="block text-sponsify-primary dark:text-sponsify-accent">
+                Log in
+              </Link>
+            </Button>
+            <Button variant="default" className="w-full justify-center dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90" asChild>
+              <Link to="/register" className="block">
+                Get Started
+              </Link>
+            </Button>
+          </div>
+        </div>
+      )}
     </header>
   );
 };

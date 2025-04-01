@@ -1,6 +1,4 @@
-
 import React, { useState } from 'react';
-import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Button } from '@/components/ui/button';
@@ -14,7 +12,7 @@ const Analytics = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main className="py-24 container mx-auto px-4"> {/* Updated padding to account for fixed header */}
+      <main className="pt-28 pb-20 container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
           <div className="mb-12 text-center">
             <h1 className="text-4xl font-bold mb-4">Sponsorship Analytics</h1>
