@@ -7,7 +7,6 @@ import {
   YAxis, 
   CartesianGrid, 
   Tooltip, 
-  ResponsiveContainer,
   LineChart,
   Line,
   Legend
@@ -65,7 +64,7 @@ const EventAnalyticsReport: React.FC<EventAnalyticsReportProps> = ({ timeRange }
           <CardDescription>Key metrics for sponsored events in the last {timeRange}</CardDescription>
         </CardHeader>
         <CardContent>
-          <div className="h-80">
+          <div className="h-96 w-full">
             <ChartContainer 
               config={{
                 attendance: { theme: { light: '#818cf8', dark: '#818cf8' } },
@@ -73,13 +72,16 @@ const EventAnalyticsReport: React.FC<EventAnalyticsReportProps> = ({ timeRange }
                 roi: { theme: { light: '#f59e0b', dark: '#f59e0b' } }
               }}
             >
-              <BarChart data={attendanceData}>
+              <BarChart 
+                data={attendanceData}
+                margin={{ top: 20, right: 30, left: 20, bottom: 70 }}
+              >
                 <CartesianGrid strokeDasharray="3 3" />
-                <XAxis dataKey="name" />
+                <XAxis dataKey="name" angle={-45} textAnchor="end" height={70} />
                 <YAxis yAxisId="left" orientation="left" />
                 <YAxis yAxisId="right" orientation="right" />
                 <ChartTooltip content={<ChartTooltipContent />} />
-                <Legend />
+                <Legend wrapperStyle={{ paddingTop: 20 }} />
                 <Bar yAxisId="left" dataKey="attendance" name="Attendance" fill="var(--color-attendance)" />
                 <Bar yAxisId="left" dataKey="leads" name="Leads Generated" fill="var(--color-leads)" />
                 <Bar yAxisId="right" dataKey="roi" name="ROI (x)" fill="var(--color-roi)" />
@@ -96,7 +98,7 @@ const EventAnalyticsReport: React.FC<EventAnalyticsReportProps> = ({ timeRange }
             <CardDescription>Breakdown of attendee interaction by day</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-64">
+            <div className="h-72">
               <ChartContainer 
                 config={{
                   booth: { theme: { light: '#8b5cf6', dark: '#8b5cf6' } },
@@ -104,12 +106,15 @@ const EventAnalyticsReport: React.FC<EventAnalyticsReportProps> = ({ timeRange }
                   networking: { theme: { light: '#06b6d4', dark: '#06b6d4' } }
                 }}
               >
-                <LineChart data={engagementData}>
+                <LineChart 
+                  data={engagementData}
+                  margin={{ top: 10, right: 30, left: 0, bottom: 30 }}
+                >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
                   <YAxis />
                   <ChartTooltip content={<ChartTooltipContent />} />
-                  <Legend />
+                  <Legend wrapperStyle={{ paddingTop: 15 }} />
                   <Line type="monotone" dataKey="booth" name="Booth Visits" stroke="var(--color-booth)" strokeWidth={2} />
                   <Line type="monotone" dataKey="sessions" name="Session Attendance" stroke="var(--color-sessions)" strokeWidth={2} />
                   <Line type="monotone" dataKey="networking" name="Networking Connections" stroke="var(--color-networking)" strokeWidth={2} />
@@ -125,19 +130,22 @@ const EventAnalyticsReport: React.FC<EventAnalyticsReportProps> = ({ timeRange }
             <CardDescription>Brand mentions and reach from event</CardDescription>
           </CardHeader>
           <CardContent>
-            <div className="h-64">
+            <div className="h-72">
               <ChartContainer 
                 config={{
                   mentions: { theme: { light: '#f43f5e', dark: '#f43f5e' } },
                   engagement: { theme: { light: '#0ea5e9', dark: '#0ea5e9' } }
                 }}
               >
-                <LineChart data={socialMentionsData}>
+                <LineChart 
+                  data={socialMentionsData}
+                  margin={{ top: 10, right: 30, left: 0, bottom: 30 }}
+                >
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="name" />
                   <YAxis />
                   <ChartTooltip content={<ChartTooltipContent />} />
-                  <Legend />
+                  <Legend wrapperStyle={{ paddingTop: 15 }} />
                   <Line type="monotone" dataKey="mentions" name="Social Mentions" stroke="var(--color-mentions)" strokeWidth={2} />
                   <Line type="monotone" dataKey="engagement" name="Engagement" stroke="var(--color-engagement)" strokeWidth={2} />
                 </LineChart>
@@ -147,66 +155,68 @@ const EventAnalyticsReport: React.FC<EventAnalyticsReportProps> = ({ timeRange }
         </Card>
       </div>
 
-      <Card>
+      <Card className="overflow-hidden">
         <CardHeader>
           <CardTitle>Event ROI Analysis</CardTitle>
           <CardDescription>Detailed breakdown of investment and returns by event</CardDescription>
         </CardHeader>
-        <CardContent>
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Event Name</TableHead>
-                <TableHead>Investment</TableHead>
-                <TableHead>Leads Generated</TableHead>
-                <TableHead>Conversions</TableHead>
-                <TableHead>Revenue</TableHead>
-                <TableHead>ROI</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              <TableRow>
-                <TableCell className="font-medium">Creator Summit</TableCell>
-                <TableCell>$15,000</TableCell>
-                <TableCell>350</TableCell>
-                <TableCell>42</TableCell>
-                <TableCell>$36,000</TableCell>
-                <TableCell className="text-green-600">2.4x</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Marketing Expo</TableCell>
-                <TableCell>$12,000</TableCell>
-                <TableCell>215</TableCell>
-                <TableCell>26</TableCell>
-                <TableCell>$21,600</TableCell>
-                <TableCell className="text-green-600">1.8x</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Tech Conference</TableCell>
-                <TableCell>$18,000</TableCell>
-                <TableCell>420</TableCell>
-                <TableCell>58</TableCell>
-                <TableCell>$55,800</TableCell>
-                <TableCell className="text-green-600">3.1x</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Industry Meetup</TableCell>
-                <TableCell>$8,000</TableCell>
-                <TableCell>180</TableCell>
-                <TableCell>19</TableCell>
-                <TableCell>$12,000</TableCell>
-                <TableCell className="text-green-600">1.5x</TableCell>
-              </TableRow>
-              <TableRow>
-                <TableCell className="font-medium">Brand Workshop</TableCell>
-                <TableCell>$5,000</TableCell>
-                <TableCell>125</TableCell>
-                <TableCell>14</TableCell>
-                <TableCell>$11,000</TableCell>
-                <TableCell className="text-green-600">2.2x</TableCell>
-              </TableRow>
-            </TableBody>
-          </Table>
+        <CardContent className="p-0">
+          <div className="overflow-x-auto">
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>Event Name</TableHead>
+                  <TableHead>Investment</TableHead>
+                  <TableHead>Leads Generated</TableHead>
+                  <TableHead>Conversions</TableHead>
+                  <TableHead>Revenue</TableHead>
+                  <TableHead>ROI</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                <TableRow>
+                  <TableCell className="font-medium">Creator Summit</TableCell>
+                  <TableCell>$15,000</TableCell>
+                  <TableCell>350</TableCell>
+                  <TableCell>42</TableCell>
+                  <TableCell>$36,000</TableCell>
+                  <TableCell className="text-green-600">2.4x</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Marketing Expo</TableCell>
+                  <TableCell>$12,000</TableCell>
+                  <TableCell>215</TableCell>
+                  <TableCell>26</TableCell>
+                  <TableCell>$21,600</TableCell>
+                  <TableCell className="text-green-600">1.8x</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Tech Conference</TableCell>
+                  <TableCell>$18,000</TableCell>
+                  <TableCell>420</TableCell>
+                  <TableCell>58</TableCell>
+                  <TableCell>$55,800</TableCell>
+                  <TableCell className="text-green-600">3.1x</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Industry Meetup</TableCell>
+                  <TableCell>$8,000</TableCell>
+                  <TableCell>180</TableCell>
+                  <TableCell>19</TableCell>
+                  <TableCell>$12,000</TableCell>
+                  <TableCell className="text-green-600">1.5x</TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell className="font-medium">Brand Workshop</TableCell>
+                  <TableCell>$5,000</TableCell>
+                  <TableCell>125</TableCell>
+                  <TableCell>14</TableCell>
+                  <TableCell>$11,000</TableCell>
+                  <TableCell className="text-green-600">2.2x</TableCell>
+                </TableRow>
+              </TableBody>
+            </Table>
+          </div>
         </CardContent>
       </Card>
     </div>

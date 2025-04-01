@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import Footer from '@/components/Footer';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
@@ -12,8 +13,8 @@ const Analytics = () => {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
-      <main className="pt-28 pb-20 container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
+      <main className="pt-24 pb-20 container mx-auto px-4">
+        <div className="max-w-5xl mx-auto">
           <div className="mb-12 text-center">
             <h1 className="text-4xl font-bold mb-4">Sponsorship Analytics</h1>
             <p className="text-xl text-muted-foreground">
@@ -54,7 +55,7 @@ const Analytics = () => {
             </div>
           </div>
 
-          <Card className="mb-8">
+          <Card className="mb-12">
             <CardHeader>
               <CardTitle>How We Measure Success</CardTitle>
               <CardDescription>
@@ -99,25 +100,27 @@ const Analytics = () => {
             </CardContent>
           </Card>
 
-          <Tabs defaultValue="events">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="events">Event Sponsorship</TabsTrigger>
-              <TabsTrigger value="creators">Content Creators</TabsTrigger>
-              <TabsTrigger value="locations">Physical Advertising</TabsTrigger>
-            </TabsList>
-            
-            <TabsContent value="events" className="mt-0">
-              <EventAnalyticsReport timeRange={timeRange} />
-            </TabsContent>
-            
-            <TabsContent value="creators" className="mt-0">
-              <CreatorAnalyticsReport timeRange={timeRange} />
-            </TabsContent>
-            
-            <TabsContent value="locations" className="mt-0">
-              <LocationAnalyticsReport timeRange={timeRange} />
-            </TabsContent>
-          </Tabs>
+          <div className="mb-2">
+            <Tabs defaultValue="events" className="w-full">
+              <TabsList className="grid w-full grid-cols-3 mb-8">
+                <TabsTrigger value="events">Event Sponsorship</TabsTrigger>
+                <TabsTrigger value="creators">Content Creators</TabsTrigger>
+                <TabsTrigger value="locations">Physical Advertising</TabsTrigger>
+              </TabsList>
+              
+              <TabsContent value="events" className="mt-0">
+                <EventAnalyticsReport timeRange={timeRange} />
+              </TabsContent>
+              
+              <TabsContent value="creators" className="mt-0">
+                <CreatorAnalyticsReport timeRange={timeRange} />
+              </TabsContent>
+              
+              <TabsContent value="locations" className="mt-0">
+                <LocationAnalyticsReport timeRange={timeRange} />
+              </TabsContent>
+            </Tabs>
+          </div>
         </div>
       </main>
       <Footer />
