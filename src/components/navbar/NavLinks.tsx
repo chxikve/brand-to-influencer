@@ -54,6 +54,9 @@ const NavLinks = ({ isMobile = false, scrollToAbout, closeMobileMenu }: NavLinks
             </Link>
           </div>
         </div>
+        <Link to="/analytics" className="block py-2 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent">
+          Analytics
+        </Link>
         <button 
           onClick={handleAboutClick}
           className="block py-2 w-full text-left text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent cursor-pointer"
@@ -89,6 +92,9 @@ const NavLinks = ({ isMobile = false, scrollToAbout, closeMobileMenu }: NavLinks
           <Link to="/pricing" className="block px-4 py-2 text-sm rounded-md text-sponsify-secondary dark:text-gray-300 hover:bg-sponsify-light dark:hover:bg-slate-700">Compare Plans</Link>
         </div>
       </div>
+      <Link to="/analytics" className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
+        Analytics
+      </Link>
       <button 
         onClick={handleAboutClick}
         className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors cursor-pointer"
