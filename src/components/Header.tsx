@@ -12,12 +12,13 @@ const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
-  // Don't render on homepage
-  if (location.pathname === '/') {
-    return null;
-  }
-  
+  // Always define hooks, even if we return early
   useEffect(() => {
+    // Only attach the event listener if we're not on the homepage
+    if (location.pathname === '/') {
+      return;
+    }
+    
     const handleScroll = () => {
       if (window.scrollY > 10) {
         setIsScrolled(true);
@@ -31,7 +32,12 @@ const Header = () => {
     handleScroll();
     
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+  }, [location.pathname]);
+
+  // Don't render on homepage
+  if (location.pathname === '/') {
+    return null;
+  }
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
