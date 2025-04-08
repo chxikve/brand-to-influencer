@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import CreatorCard from './CreatorCard';
 import { creators } from '@/data/creators';
 import { Button } from '@/components/ui/button';
 import { 
@@ -11,6 +10,7 @@ import {
   CardTitle, 
   CardFooter 
 } from '@/components/ui/card';
+import CreatorSlider from '@/features/creators/components/CreatorSlider';
 import { TrendingUp, Mail, Users, ArrowRight, Star, BarChart, Globe, Award, TrendingUpIcon } from 'lucide-react';
 
 const CreatorProfiles = () => {
@@ -152,14 +152,13 @@ const CreatorProfiles = () => {
           </div>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {creators.map((creator, index) => (
-            <CreatorCard 
-              key={creator.id} 
-              creator={creator} 
-              index={index} 
-            />
-          ))}
+        {/* Replace the grid with our new CreatorSlider component */}
+        <div className="mb-12">
+          <CreatorSlider 
+            creators={creators} 
+            title="Featured Creators"
+            description="Swipe to see our top performing content creators"
+          />
         </div>
         
         <div className="mt-12 text-center animate-on-scroll">
