@@ -1,17 +1,39 @@
 
 import React from 'react';
+import { Badge } from '@/components/ui/badge';
 
 interface CategoryTagsProps {
   categories: string[];
+  className?: string;
+  variant?: 'default' | 'outline' | 'admin';
 }
 
-const CategoryTags: React.FC<CategoryTagsProps> = ({ categories }) => {
+const CategoryTags: React.FC<CategoryTagsProps> = ({ 
+  categories, 
+  className = "", 
+  variant = 'default' 
+}) => {
+  const getTagClass = () => {
+    switch(variant) {
+      case 'outline':
+        return 'bg-transparent border border-primary/30 text-primary hover:bg-primary/10';
+      case 'admin':
+        return 'bg-primary/10 text-primary hover:bg-primary/20';
+      default:
+        return 'bg-white dark:bg-gray-800 shadow-sm';
+    }
+  };
+
   return (
-    <div className="mt-8 flex flex-wrap justify-center gap-2">
+    <div className={`flex flex-wrap gap-2 ${className}`}>
       {categories.map((category, index) => (
-        <span key={index} className="px-3 py-1 bg-white dark:bg-gray-800 rounded-full text-xs shadow-sm">
+        <Badge 
+          key={index} 
+          variant="secondary"
+          className={`px-3 py-1 rounded-full text-xs font-medium ${getTagClass()}`}
+        >
           {category}
-        </span>
+        </Badge>
       ))}
     </div>
   );

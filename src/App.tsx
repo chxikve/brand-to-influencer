@@ -19,16 +19,18 @@ import ForBrands from "./pages/ForBrands";
 import ForCreators from "./pages/ForCreators";
 import Pricing from "./pages/Pricing";
 import Analytics from "./pages/Analytics";
+import Admin from "./pages/Admin";
 
 const queryClient = new QueryClient();
 
 // Component to conditionally render the header
 const AppRoutes = () => {
   const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
   
   return (
     <>
-      <Header />
+      {!isAdminRoute && <Header />}
       <Routes>
         <Route path="/" element={<Index />} />
         <Route path="/login" element={<Login />} />
@@ -39,6 +41,7 @@ const AppRoutes = () => {
         <Route path="/for-creators" element={<ForCreators />} />
         <Route path="/pricing" element={<Pricing />} />
         <Route path="/analytics" element={<Analytics />} />
+        <Route path="/admin/*" element={<Admin />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>
