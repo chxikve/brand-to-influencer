@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -14,6 +13,8 @@ import {
 import { PlusCircle, Search, Edit, Trash } from 'lucide-react';
 import EditDialog from '@/components/ui/edit-dialog';
 import { useToast } from '@/components/ui/use-toast';
+import { useAtom } from 'jotai';
+import { creatorsAtom } from '@/services/creatorService';
 
 interface Creator {
   id: number;
@@ -26,14 +27,7 @@ interface Creator {
 
 const CreatorsManagement = () => {
   const { toast } = useToast();
-  const [creators, setCreators] = useState<Creator[]>([
-    { id: 1, name: 'Alex Johnson', email: 'alex@example.com', followers: '245K', engagement: '4.2%', category: 'Technology' },
-    { id: 2, name: 'Samantha Lee', email: 'sam@example.com', followers: '1.2M', engagement: '3.8%', category: 'Lifestyle' },
-    { id: 3, name: 'Marcus Chen', email: 'marcus@example.com', followers: '620K', engagement: '5.1%', category: 'Fitness' },
-    { id: 4, name: 'Emily Watson', email: 'emily@example.com', followers: '850K', engagement: '4.5%', category: 'Beauty' },
-    { id: 5, name: 'Jordan Smith', email: 'jordan@example.com', followers: '430K', engagement: '3.9%', category: 'Gaming' },
-  ]);
-  
+  const [creators, setCreators] = useAtom(creatorsAtom);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
   const [editingCreator, setEditingCreator] = useState<Creator | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
@@ -53,16 +47,13 @@ const CreatorsManagement = () => {
 
   const handleSave = (data: Creator) => {
     if (editingCreator) {
-      // Check if this is an update to existing creator or adding a new one
       if (creators.some(c => c.id === editingCreator.id)) {
-        // Update existing creator
         setCreators(creators.map(c => c.id === editingCreator.id ? { ...data, id: c.id } : c));
         toast({
           title: "Changes saved",
           description: "Creator information has been updated successfully."
         });
       } else {
-        // Add new creator
         setCreators([...creators, { ...data, id: editingCreator.id }]);
         toast({
           title: "Creator added",

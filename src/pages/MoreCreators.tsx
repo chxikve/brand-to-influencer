@@ -4,11 +4,14 @@ import { Link } from 'react-router-dom';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/Footer';
 import CreatorCard from '@/components/CreatorCard';
-import { moreCreators, creators } from '@/data/creators';
 import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import { useAtom } from 'jotai';
+import { creatorsAtom } from '@/services/creatorService';
 
 const MoreCreators = () => {
+  const [creators] = useAtom(creatorsAtom);
+
   useEffect(() => {
     // Scroll to top on page load
     window.scrollTo(0, 0);
@@ -33,9 +36,6 @@ const MoreCreators = () => {
     
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
-  
-  // Combine both creator arrays for the full showcase
-  const allCreators = [...creators, ...moreCreators];
   
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -64,7 +64,7 @@ const MoreCreators = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {allCreators.map((creator, index) => (
+              {creators.map((creator, index) => (
                 <CreatorCard 
                   key={creator.id} 
                   creator={creator} 
