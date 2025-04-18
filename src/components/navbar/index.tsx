@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { useAuth } from '@/hooks/useAuth';  // Import useAuth
 import ThemeToggle from './ThemeToggle';
 import NavLinks from './NavLinks';
 import MobileMenu from './MobileMenu';
@@ -11,6 +12,7 @@ import MobileMenu from './MobileMenu';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isAuthenticated, user } = useAuth();  // Get authentication state
 
   useEffect(() => {
     const handleScroll = () => {
@@ -60,6 +62,15 @@ const Navbar = () => {
 
         <div className="hidden md:flex items-center space-x-8">
           <NavLinks scrollToAbout={scrollToAbout} />
+          {/* Add Admin link for authenticated users */}
+          {isAuthenticated && (
+            <Link 
+              to="/admin" 
+              className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors"
+            >
+              Admin Panel
+            </Link>
+          )}
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
