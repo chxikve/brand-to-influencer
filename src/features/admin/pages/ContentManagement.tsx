@@ -1,9 +1,10 @@
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from '@/components/ui/table';
 import { 
   PlusCircle, 
   Search, 
@@ -12,15 +13,131 @@ import {
   Film, 
   Edit, 
   Trash,
-  Globe 
+  Globe,
+  Eye
 } from 'lucide-react';
+import { useToast } from '@/components/ui/use-toast';
+
+interface ContentItem {
+  id: string;
+  title: string;
+  type: string;
+  status: string;
+  lastModified: string;
+}
 
 const ContentManagement = () => {
+  const { toast } = useToast();
+  const [activeTab, setActiveTab] = useState('pages');
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const contentData = {
+    pages: [
+      { id: '1', title: 'Home', type: 'page', status: 'Published', lastModified: '2024-03-15' },
+      { id: '2', title: 'About', type: 'page', status: 'Published', lastModified: '2024-03-14' },
+      { id: '3', title: 'Contact', type: 'page', status: 'Draft', lastModified: '2024-03-13' },
+    ],
+    blog: [
+      { id: '4', title: 'Getting Started Guide', type: 'post', status: 'Published', lastModified: '2024-03-15' },
+      { id: '5', title: 'Best Practices', type: 'post', status: 'Draft', lastModified: '2024-03-14' },
+    ],
+    media: [
+      { id: '6', title: 'Hero Image', type: 'image', status: 'Active', lastModified: '2024-03-15' },
+      { id: '7', title: 'About Banner', type: 'image', status: 'Active', lastModified: '2024-03-14' },
+    ],
+    video: [
+      { id: '8', title: 'Welcome Video', type: 'video', status: 'Published', lastModified: '2024-03-15' },
+      { id: '9', title: 'Tutorial', type: 'video', status: 'Processing', lastModified: '2024-03-14' },
+    ]
+  };
+
+  const handleSearch = (query: string) => {
+    setSearchQuery(query);
+  };
+
+  const handleDelete = (id: string, type: string) => {
+    toast({
+      title: "Content Deleted",
+      description: `${type} has been deleted successfully.`,
+    });
+  };
+
+  const handleEdit = (id: string) => {
+    toast({
+      title: "Edit Mode",
+      description: "Opening content editor...",
+    });
+  };
+
+  const handleView = (id: string) => {
+    toast({
+      title: "Preview Mode",
+      description: "Opening content preview...",
+    });
+  };
+
+  const handleAddContent = () => {
+    toast({
+      title: "Add New Content",
+      description: "Opening content creation form...",
+    });
+  };
+
+  const renderContentTable = (items: ContentItem[]) => {
+    const filteredItems = items.filter(item => 
+      item.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      item.status.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+
+    return (
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Title</TableHead>
+            <TableHead>Status</TableHead>
+            <TableHead>Last Modified</TableHead>
+            <TableHead>Actions</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {filteredItems.map((item) => (
+            <TableRow key={item.id}>
+              <TableCell>{item.title}</TableCell>
+              <TableCell>
+                <span className={`px-2 py-1 rounded-full text-xs ${
+                  item.status === 'Published' ? 'bg-green-100 text-green-800' :
+                  item.status === 'Draft' ? 'bg-yellow-100 text-yellow-800' :
+                  'bg-blue-100 text-blue-800'
+                }`}>
+                  {item.status}
+                </span>
+              </TableCell>
+              <TableCell>{item.lastModified}</TableCell>
+              <TableCell>
+                <div className="flex space-x-2">
+                  <Button variant="ghost" size="icon" onClick={() => handleView(item.id)}>
+                    <Eye className="h-4 w-4" />
+                  </Button>
+                  <Button variant="ghost" size="icon" onClick={() => handleEdit(item.id)}>
+                    <Edit className="h-4 w-4" />
+                  </Button>
+                  <Button variant="ghost" size="icon" onClick={() => handleDelete(item.id, item.title)}>
+                    <Trash className="h-4 w-4" />
+                  </Button>
+                </div>
+              </TableCell>
+            </TableRow>
+          ))}
+        </TableBody>
+      </Table>
+    );
+  };
+
   return (
     <>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Content Management</h1>
-        <Button>
+        <Button onClick={handleAddContent}>
           <PlusCircle className="h-4 w-4 mr-2" />
           Add Content
         </Button>
@@ -31,7 +148,7 @@ const ContentManagement = () => {
           <CardTitle>All Content</CardTitle>
         </CardHeader>
         <CardContent>
-          <Tabs defaultValue="pages">
+          <Tabs defaultValue="pages" onValueChange={(value) => setActiveTab(value)}>
             <TabsList className="mb-4">
               <TabsTrigger value="pages">
                 <Globe className="h-4 w-4 mr-2" />
@@ -57,97 +174,26 @@ const ContentManagement = () => {
                 <Input
                   placeholder="Search content..."
                   className="pl-8 w-full"
+                  value={searchQuery}
+                  onChange={(e) => handleSearch(e.target.value)}
                 />
               </div>
             </div>
             
             <TabsContent value="pages">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {['Home', 'About', 'Pricing', 'For Creators', 'For Brands', 'Contact'].map((page) => (
-                  <Card key={page}>
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-medium">{page}</h3>
-                        <div className="flex space-x-1">
-                          <Button variant="ghost" size="icon">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-                      <p className="text-xs text-muted-foreground">Last updated: 2 days ago</p>
-                      <div className="mt-2 flex">
-                        <Button size="sm" variant="outline" className="text-xs">
-                          <Globe className="h-3 w-3 mr-1" /> View
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {renderContentTable(contentData.pages)}
             </TabsContent>
             
             <TabsContent value="blog">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {['10 Tips for Creators', 'How to Grow Your Audience', 'Maximizing Campaign ROI', 'Creator Trends 2024'].map((post) => (
-                  <Card key={post}>
-                    <CardContent className="p-4">
-                      <div className="flex items-center justify-between mb-2">
-                        <h3 className="font-medium">{post}</h3>
-                        <div className="flex space-x-1">
-                          <Button variant="ghost" size="icon">
-                            <Edit className="h-4 w-4" />
-                          </Button>
-                          <Button variant="ghost" size="icon">
-                            <Trash className="h-4 w-4" />
-                          </Button>
-                        </div>
-                      </div>
-                      <p className="text-xs text-muted-foreground">Published: Mar 15, 2024</p>
-                      <div className="mt-2 flex">
-                        <Button size="sm" variant="outline" className="text-xs">View</Button>
-                        <Button size="sm" variant="outline" className="text-xs ml-2">Edit</Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {renderContentTable(contentData.blog)}
             </TabsContent>
             
             <TabsContent value="media">
-              <div className="grid gap-4 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
-                {[1, 2, 3, 4, 5, 6, 7, 8].map((item) => (
-                  <Card key={item}>
-                    <div className="aspect-square bg-muted flex items-center justify-center">
-                      <Image className="h-8 w-8 text-muted-foreground" />
-                    </div>
-                    <CardContent className="p-2">
-                      <p className="text-xs truncate">image-{item}.jpg</p>
-                      <div className="flex justify-between mt-1">
-                        <p className="text-xs text-muted-foreground">240 KB</p>
-                        <Button variant="ghost" size="icon" className="h-6 w-6">
-                          <Trash className="h-3 w-3" />
-                        </Button>
-                      </div>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {renderContentTable(contentData.media)}
             </TabsContent>
             
             <TabsContent value="video">
-              <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-                {['Promotional Video', 'Tutorial: Getting Started', 'Creator Testimonials', 'Brand Success Stories'].map((video) => (
-                  <Card key={video}>
-                    <div className="aspect-video bg-muted flex items-center justify-center">
-                      <Film className="h-8 w-8 text-muted-foreground" />
-                    </div>
-                    <CardContent className="p-3">
-                      <h3 className="font-medium text-sm">{video}</h3>
-                      <p className="text-xs text-muted-foreground mt-1">Duration: 2:45</p>
-                    </CardContent>
-                  </Card>
-                ))}
-              </div>
+              {renderContentTable(contentData.video)}
             </TabsContent>
           </Tabs>
         </CardContent>
