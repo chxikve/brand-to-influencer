@@ -19,17 +19,9 @@ const Admin = () => {
   }
 
   return (
-    <AdminLayout>
-      <Routes>
-        <Route path="/" element={<Dashboard />} />
-        <Route path="/management" element={<Dashboard />} />
-        <Route path="/creators" element={<CreatorsManagement />} />
-        <Route path="/campaigns" element={<CampaignsManagement />} />
-        <Route path="/reports" element={<ReportsManagement />} />
-        <Route path="/content" element={<ContentManagement />} />
-        <Route path="/settings" element={<SettingsPage />} />
-      </Routes>
-    </AdminLayout>
+    <div>
+      <AdminLayout />
+    </div>
   );
 };
 
