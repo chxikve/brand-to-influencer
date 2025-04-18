@@ -7,105 +7,131 @@ import { Users, TrendingUp, DollarSign, Calendar } from 'lucide-react';
 const Dashboard = () => {
   return (
     <>
-      <h1 className="text-3xl font-bold mb-6">Dashboard</h1>
+      <div className="flex justify-between items-center mb-8">
+        <div>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-indigo-600 bg-clip-text text-transparent">
+            Dashboard
+          </h1>
+          <p className="text-gray-500 dark:text-gray-400 mt-1">
+            Welcome back! Here's what's happening today.
+          </p>
+        </div>
+      </div>
 
-      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4">
-        <Card>
+      <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+        <Card className="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 border-0 shadow-lg">
           <CardContent className="p-6 flex flex-row items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground mb-1">Total Creators</p>
-              <h3 className="text-2xl font-bold">1,240</h3>
-              <p className="text-xs text-green-500 mt-1">+12% from last month</p>
+              <p className="text-sm font-medium text-blue-600 dark:text-blue-400 mb-1">Total Creators</p>
+              <h3 className="text-2xl font-bold text-blue-900 dark:text-blue-100">1,240</h3>
+              <p className="text-xs text-blue-700 dark:text-blue-300 mt-1">+12% from last month</p>
             </div>
-            <Users className="h-8 w-8 text-primary" />
+            <Users className="h-8 w-8 text-blue-500 dark:text-blue-400" />
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 border-0 shadow-lg">
           <CardContent className="p-6 flex flex-row items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground mb-1">Active Campaigns</p>
-              <h3 className="text-2xl font-bold">24</h3>
-              <p className="text-xs text-green-500 mt-1">+4 new this week</p>
+              <p className="text-sm font-medium text-purple-600 dark:text-purple-400 mb-1">Active Campaigns</p>
+              <h3 className="text-2xl font-bold text-purple-900 dark:text-purple-100">24</h3>
+              <p className="text-xs text-purple-700 dark:text-purple-300 mt-1">+4 new this week</p>
             </div>
-            <Calendar className="h-8 w-8 text-primary" />
+            <Calendar className="h-8 w-8 text-purple-500 dark:text-purple-400" />
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 border-0 shadow-lg">
           <CardContent className="p-6 flex flex-row items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground mb-1">Revenue</p>
-              <h3 className="text-2xl font-bold">$24,500</h3>
-              <p className="text-xs text-green-500 mt-1">+8% from last month</p>
+              <p className="text-sm font-medium text-green-600 dark:text-green-400 mb-1">Revenue</p>
+              <h3 className="text-2xl font-bold text-green-900 dark:text-green-100">$24,500</h3>
+              <p className="text-xs text-green-700 dark:text-green-300 mt-1">+8% from last month</p>
             </div>
-            <DollarSign className="h-8 w-8 text-primary" />
+            <DollarSign className="h-8 w-8 text-green-500 dark:text-green-400" />
           </CardContent>
         </Card>
         
-        <Card>
+        <Card className="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 border-0 shadow-lg">
           <CardContent className="p-6 flex flex-row items-center justify-between">
             <div>
-              <p className="text-sm font-medium text-muted-foreground mb-1">Growth</p>
-              <h3 className="text-2xl font-bold">+19%</h3>
-              <p className="text-xs text-green-500 mt-1">+2% from last month</p>
+              <p className="text-sm font-medium text-orange-600 dark:text-orange-400 mb-1">Growth</p>
+              <h3 className="text-2xl font-bold text-orange-900 dark:text-orange-100">+19%</h3>
+              <p className="text-xs text-orange-700 dark:text-orange-300 mt-1">+2% from last month</p>
             </div>
-            <TrendingUp className="h-8 w-8 text-primary" />
+            <TrendingUp className="h-8 w-8 text-orange-500 dark:text-orange-400" />
           </CardContent>
         </Card>
       </div>
 
-      <div className="mt-6">
-        <Tabs defaultValue="overview">
-          <TabsList>
-            <TabsTrigger value="overview">Overview</TabsTrigger>
-            <TabsTrigger value="analytics">Analytics</TabsTrigger>
-            <TabsTrigger value="reports">Reports</TabsTrigger>
+      <div className="mt-8">
+        <Tabs defaultValue="overview" className="space-y-4">
+          <TabsList className="bg-white dark:bg-gray-800 p-1 gap-2">
+            <TabsTrigger value="overview" className="data-[state=active]:bg-gray-100 dark:data-[state=active]:bg-gray-700">
+              Overview
+            </TabsTrigger>
+            <TabsTrigger value="analytics" className="data-[state=active]:bg-gray-100 dark:data-[state=active]:bg-gray-700">
+              Analytics
+            </TabsTrigger>
+            <TabsTrigger value="reports" className="data-[state=active]:bg-gray-100 dark:data-[state=active]:bg-gray-700">
+              Reports
+            </TabsTrigger>
           </TabsList>
-          <TabsContent value="overview" className="mt-4">
-            <Card>
+          <TabsContent value="overview" className="space-y-4">
+            <Card className="bg-white dark:bg-gray-800 border-0 shadow-lg">
               <CardHeader>
-                <CardTitle>Recent Activity</CardTitle>
+                <CardTitle className="text-xl font-semibold">Recent Activity</CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
-                  <div className="border-b pb-2">
-                    <p className="text-sm font-medium">New creator registered</p>
-                    <p className="text-xs text-muted-foreground">Jessica Smith • 10 mins ago</p>
-                  </div>
-                  <div className="border-b pb-2">
-                    <p className="text-sm font-medium">Campaign updated</p>
-                    <p className="text-xs text-muted-foreground">Summer Promo 2024 • 2 hours ago</p>
-                  </div>
-                  <div className="border-b pb-2">
-                    <p className="text-sm font-medium">Report generated</p>
-                    <p className="text-xs text-muted-foreground">Monthly Analytics • 5 hours ago</p>
-                  </div>
-                  <div>
-                    <p className="text-sm font-medium">New brand partnership</p>
-                    <p className="text-xs text-muted-foreground">TechGiant Inc. • 1 day ago</p>
-                  </div>
+                  {[
+                    {
+                      title: "New creator registered",
+                      description: "Jessica Smith • 10 mins ago",
+                      color: "text-blue-600 dark:text-blue-400"
+                    },
+                    {
+                      title: "Campaign updated",
+                      description: "Summer Promo 2024 • 2 hours ago",
+                      color: "text-purple-600 dark:text-purple-400"
+                    },
+                    {
+                      title: "Report generated",
+                      description: "Monthly Analytics • 5 hours ago",
+                      color: "text-green-600 dark:text-green-400"
+                    },
+                    {
+                      title: "New brand partnership",
+                      description: "TechGiant Inc. • 1 day ago",
+                      color: "text-orange-600 dark:text-orange-400"
+                    }
+                  ].map((item, index) => (
+                    <div key={index} className="border-b last:border-0 pb-2 last:pb-0">
+                      <p className={`text-sm font-medium ${item.color}`}>{item.title}</p>
+                      <p className="text-xs text-gray-500 dark:text-gray-400">{item.description}</p>
+                    </div>
+                  ))}
                 </div>
               </CardContent>
             </Card>
           </TabsContent>
-          <TabsContent value="analytics" className="mt-4">
-            <Card>
+          <TabsContent value="analytics">
+            <Card className="bg-white dark:bg-gray-800 border-0 shadow-lg">
               <CardHeader>
-                <CardTitle>Analytics Overview</CardTitle>
+                <CardTitle className="text-xl font-semibold">Analytics Overview</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Analytics content will appear here</p>
+                <p className="text-gray-500 dark:text-gray-400">Analytics content will appear here</p>
               </CardContent>
             </Card>
           </TabsContent>
-          <TabsContent value="reports" className="mt-4">
-            <Card>
+          <TabsContent value="reports">
+            <Card className="bg-white dark:bg-gray-800 border-0 shadow-lg">
               <CardHeader>
-                <CardTitle>Reports</CardTitle>
+                <CardTitle className="text-xl font-semibold">Reports</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-muted-foreground">Reports content will appear here</p>
+                <p className="text-gray-500 dark:text-gray-400">Reports content will appear here</p>
               </CardContent>
             </Card>
           </TabsContent>
