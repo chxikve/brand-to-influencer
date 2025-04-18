@@ -20,12 +20,12 @@ import { Creator } from '@/data/creators';
 
 // Define a simpler interface for the admin form
 interface CreatorFormData {
-  id: number;
+  id: string;
   name: string;
   email: string;
   followers: string;
-  engagementRate: string; // Changed to match Creator type
-  niche: string; // Changed to match Creator type
+  engagementRate: string;
+  niche: string;
 }
 
 const CreatorsManagement = () => {
@@ -41,7 +41,7 @@ const CreatorsManagement = () => {
       id: creator.id,
       name: creator.name,
       email: creator.email || '',
-      followers: typeof creator.followers === 'number' ? creator.followers.toString() : creator.followers,
+      followers: typeof creator.followers === 'string' ? creator.followers : '',
       engagementRate: creator.engagementRate,
       niche: creator.niche
     };
@@ -49,7 +49,7 @@ const CreatorsManagement = () => {
     setIsEditDialogOpen(true);
   };
 
-  const handleDelete = (id: number) => {
+  const handleDelete = (id: string) => {
     setCreators(creators.filter(creator => creator.id !== id));
     toast({
       title: "Creator deleted",
@@ -84,7 +84,7 @@ const CreatorsManagement = () => {
         // Add new creator with minimum required fields
         // Generate some default values for required fields
         const newCreator: Creator = {
-          id: editingCreator.id,
+          id: data.id,
           name: data.name,
           handle: `@${data.name.toLowerCase().replace(/\s+/g, '.')}`,
           avatar: '/placeholder.svg',
@@ -94,6 +94,7 @@ const CreatorsManagement = () => {
           platforms: ["instagram"],
           description: "New creator added via admin panel.",
           location: "Unknown",
+          avgLikes: "0",
           avgComments: "N/A",
           avgShares: "N/A",
           color: "#4f46e5",
@@ -118,7 +119,8 @@ const CreatorsManagement = () => {
   };
 
   const handleAdd = () => {
-    const newId = creators.length > 0 ? Math.max(...creators.map(c => c.id)) + 1 : 1;
+    // Generate a unique string ID based on timestamp
+    const newId = `new-creator-${Date.now()}`;
     const newCreator: CreatorFormData = {
       id: newId,
       name: '',
@@ -208,7 +210,7 @@ const CreatorsManagement = () => {
             setEditingCreator(null);
           }}
           onSave={handleSave}
-          title={editingCreator.id === (creators.length > 0 ? Math.max(...creators.map(c => c.id)) + 1 : 1) ? "Add Creator" : "Edit Creator"}
+          title={editingCreator.id.startsWith('new-creator') ? "Add Creator" : "Edit Creator"}
           fields={[
             { name: 'name', label: 'Name', value: editingCreator.name },
             { name: 'email', label: 'Email', type: 'email', value: editingCreator.email },
