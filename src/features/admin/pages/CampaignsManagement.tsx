@@ -1,5 +1,4 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
@@ -12,10 +11,22 @@ import {
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
 import { PlusCircle, Edit, Trash, Eye } from 'lucide-react';
+import EditDialog from '@/components/ui/edit-dialog';
+import { useToast } from '@/components/ui/use-toast';
+
+interface Campaign {
+  id: number;
+  name: string;
+  status: string;
+  budget: string;
+  startDate: string;
+  endDate: string;
+  creators: number;
+}
 
 const CampaignsManagement = () => {
-  // Mock data - would be fetched from API in real app
-  const campaigns = [
+  const { toast } = useToast();
+  const [campaigns, setCampaigns] = useState<Campaign[]>([
     { 
       id: 1, 
       name: 'Summer Collection Launch', 
@@ -61,9 +72,48 @@ const CampaignsManagement = () => {
       endDate: '2024-06-30',
       creators: 6
     },
-  ];
+  ]);
 
-  // Function to get the right badge color based on status
+  const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
+  const [editingCampaign, setEditingCampaign] = useState<Campaign | null>(null);
+
+  const handleEdit = (campaign: Campaign) => {
+    setEditingCampaign(campaign);
+    setIsEditDialogOpen(true);
+  };
+
+  const handleDelete = (id: number) => {
+    setCampaigns(campaigns.filter(campaign => campaign.id !== id));
+    toast({
+      title: "Campaign deleted",
+      description: "The campaign has been removed successfully."
+    });
+  };
+
+  const handleSave = (data: Campaign) => {
+    if (editingCampaign) {
+      setCampaigns(campaigns.map(c => c.id === editingCampaign.id ? { ...data, id: c.id } : c));
+      toast({
+        title: "Changes saved",
+        description: "Campaign information has been updated successfully."
+      });
+    }
+  };
+
+  const handleAdd = () => {
+    const newCampaign: Campaign = {
+      id: campaigns.length + 1,
+      name: '',
+      status: 'draft',
+      budget: '$0',
+      startDate: '',
+      endDate: '',
+      creators: 0,
+    };
+    setEditingCampaign(newCampaign);
+    setIsEditDialogOpen(true);
+  };
+
   const getStatusBadge = (status: string) => {
     switch (status) {
       case 'active':
@@ -83,7 +133,7 @@ const CampaignsManagement = () => {
     <>
       <div className="flex justify-between items-center mb-6">
         <h1 className="text-3xl font-bold">Campaigns Management</h1>
-        <Button>
+        <Button onClick={handleAdd}>
           <PlusCircle className="h-4 w-4 mr-2" />
           Create Campaign
         </Button>
@@ -120,10 +170,10 @@ const CampaignsManagement = () => {
                       <Button variant="ghost" size="icon">
                         <Eye className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon">
+                      <Button variant="ghost" size="icon" onClick={() => handleEdit(campaign)}>
                         <Edit className="h-4 w-4" />
                       </Button>
-                      <Button variant="ghost" size="icon">
+                      <Button variant="ghost" size="icon" onClick={() => handleDelete(campaign.id)}>
                         <Trash className="h-4 w-4" />
                       </Button>
                     </TableCell>
@@ -134,6 +184,26 @@ const CampaignsManagement = () => {
           </div>
         </CardContent>
       </Card>
+
+      {editingCampaign && (
+        <EditDialog
+          isOpen={isEditDialogOpen}
+          onClose={() => {
+            setIsEditDialogOpen(false);
+            setEditingCampaign(null);
+          }}
+          onSave={handleSave}
+          title={editingCampaign.id === campaigns.length + 1 ? "Add Campaign" : "Edit Campaign"}
+          fields={[
+            { name: 'name', label: 'Campaign Name', value: editingCampaign.name },
+            { name: 'status', label: 'Status', value: editingCampaign.status },
+            { name: 'budget', label: 'Budget', value: editingCampaign.budget },
+            { name: 'startDate', label: 'Start Date', type: 'date', value: editingCampaign.startDate },
+            { name: 'endDate', label: 'End Date', type: 'date', value: editingCampaign.endDate },
+            { name: 'creators', label: 'Number of Creators', type: 'number', value: editingCampaign.creators },
+          ]}
+        />
+      )}
     </>
   );
 };
