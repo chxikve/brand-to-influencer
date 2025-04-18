@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
@@ -15,25 +16,36 @@ import EditDialog from '@/components/ui/edit-dialog';
 import { useToast } from '@/components/ui/use-toast';
 import { useAtom } from 'jotai';
 import { creatorsAtom } from '@/services/creatorService';
+import { Creator } from '@/data/creators'; 
 
-interface Creator {
+// Define a simpler interface for the admin form
+interface CreatorFormData {
   id: number;
   name: string;
   email: string;
   followers: string;
-  engagement: string;
-  category: string;
+  engagementRate: string; // Changed to match Creator type
+  niche: string; // Changed to match Creator type
 }
 
 const CreatorsManagement = () => {
   const { toast } = useToast();
   const [creators, setCreators] = useAtom(creatorsAtom);
   const [isEditDialogOpen, setIsEditDialogOpen] = useState(false);
-  const [editingCreator, setEditingCreator] = useState<Creator | null>(null);
+  const [editingCreator, setEditingCreator] = useState<CreatorFormData | null>(null);
   const [searchQuery, setSearchQuery] = useState('');
 
   const handleEdit = (creator: Creator) => {
-    setEditingCreator(creator);
+    // Extract only the fields needed for the form
+    const formData: CreatorFormData = {
+      id: creator.id,
+      name: creator.name,
+      email: creator.email || '',
+      followers: typeof creator.followers === 'number' ? creator.followers.toString() : creator.followers,
+      engagementRate: creator.engagementRate,
+      niche: creator.niche
+    };
+    setEditingCreator(formData);
     setIsEditDialogOpen(true);
   };
 
@@ -45,16 +57,56 @@ const CreatorsManagement = () => {
     });
   };
 
-  const handleSave = (data: Creator) => {
+  const handleSave = (data: CreatorFormData) => {
     if (editingCreator) {
+      // Check if we're updating an existing creator
       if (creators.some(c => c.id === editingCreator.id)) {
-        setCreators(creators.map(c => c.id === editingCreator.id ? { ...data, id: c.id } : c));
+        // Update existing creator
+        setCreators(creators.map(c => {
+          if (c.id === editingCreator.id) {
+            // Preserve other properties while updating the edited ones
+            return {
+              ...c,
+              name: data.name,
+              email: data.email,
+              followers: data.followers,
+              engagementRate: data.engagementRate,
+              niche: data.niche
+            };
+          }
+          return c;
+        }));
         toast({
           title: "Changes saved",
           description: "Creator information has been updated successfully."
         });
       } else {
-        setCreators([...creators, { ...data, id: editingCreator.id }]);
+        // Add new creator with minimum required fields
+        // Generate some default values for required fields
+        const newCreator: Creator = {
+          id: editingCreator.id,
+          name: data.name,
+          handle: `@${data.name.toLowerCase().replace(/\s+/g, '.')}`,
+          avatar: '/placeholder.svg',
+          niche: data.niche,
+          followers: data.followers,
+          engagementRate: data.engagementRate,
+          platforms: ["instagram"],
+          description: "New creator added via admin panel.",
+          location: "Unknown",
+          avgComments: "N/A",
+          avgShares: "N/A",
+          color: "#4f46e5",
+          growthData: [
+            { month: "Jan", followers: 0 },
+            { month: "Feb", followers: 0 },
+            { month: "Mar", followers: 0 },
+            { month: "Apr", followers: 0 }
+          ],
+          expertise: ["Content Creation"]
+        };
+        
+        setCreators([...creators, newCreator]);
         toast({
           title: "Creator added",
           description: "New creator has been added successfully."
@@ -66,13 +118,14 @@ const CreatorsManagement = () => {
   };
 
   const handleAdd = () => {
-    const newCreator: Creator = {
-      id: creators.length > 0 ? Math.max(...creators.map(c => c.id)) + 1 : 1,
+    const newId = creators.length > 0 ? Math.max(...creators.map(c => c.id)) + 1 : 1;
+    const newCreator: CreatorFormData = {
+      id: newId,
       name: '',
       email: '',
       followers: '0',
-      engagement: '0%',
-      category: '',
+      engagementRate: '0%',
+      niche: '',
     };
     setEditingCreator(newCreator);
     setIsEditDialogOpen(true);
@@ -80,8 +133,8 @@ const CreatorsManagement = () => {
 
   const filteredCreators = creators.filter(creator =>
     creator.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    creator.email.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    creator.category.toLowerCase().includes(searchQuery.toLowerCase())
+    (creator.email && creator.email.toLowerCase().includes(searchQuery.toLowerCase())) ||
+    creator.niche.toLowerCase().includes(searchQuery.toLowerCase())
   );
 
   return (
@@ -119,7 +172,7 @@ const CreatorsManagement = () => {
                   <TableHead>Email</TableHead>
                   <TableHead>Followers</TableHead>
                   <TableHead>Engagement Rate</TableHead>
-                  <TableHead>Category</TableHead>
+                  <TableHead>Niche</TableHead>
                   <TableHead className="text-right">Actions</TableHead>
                 </TableRow>
               </TableHeader>
@@ -127,10 +180,10 @@ const CreatorsManagement = () => {
                 {filteredCreators.map((creator) => (
                   <TableRow key={creator.id}>
                     <TableCell className="font-medium">{creator.name}</TableCell>
-                    <TableCell>{creator.email}</TableCell>
+                    <TableCell>{creator.email || 'N/A'}</TableCell>
                     <TableCell>{creator.followers}</TableCell>
-                    <TableCell>{creator.engagement}</TableCell>
-                    <TableCell>{creator.category}</TableCell>
+                    <TableCell>{creator.engagementRate}</TableCell>
+                    <TableCell>{creator.niche}</TableCell>
                     <TableCell className="text-right">
                       <Button variant="ghost" size="icon" onClick={() => handleEdit(creator)}>
                         <Edit className="h-4 w-4" />
@@ -160,8 +213,8 @@ const CreatorsManagement = () => {
             { name: 'name', label: 'Name', value: editingCreator.name },
             { name: 'email', label: 'Email', type: 'email', value: editingCreator.email },
             { name: 'followers', label: 'Followers', value: editingCreator.followers },
-            { name: 'engagement', label: 'Engagement Rate', value: editingCreator.engagement },
-            { name: 'category', label: 'Category', value: editingCreator.category },
+            { name: 'engagementRate', label: 'Engagement Rate', value: editingCreator.engagementRate },
+            { name: 'niche', label: 'Niche', value: editingCreator.niche },
           ]}
         />
       )}

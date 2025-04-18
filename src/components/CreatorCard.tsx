@@ -33,6 +33,10 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
     return formatFollowers(Number(value)).toString();
   };
 
+  // Handle potentially missing data
+  const expertise = creator.expertise || creator.topCategories || [];
+  const platforms = creator.platforms || [];
+
   return (
     <Card className="overflow-hidden animate-on-scroll hover-scale" style={{ animationDelay: `${index * 100}ms` }}>
       <CardHeader className="pb-2">
@@ -53,7 +57,7 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
             </div>
           </div>
           <div className="flex gap-1">
-            {creator.platforms.map((platform, i) => {
+            {platforms.map((platform, i) => {
               const iconInfo = platformIcons[platform as keyof typeof platformIcons];
               if (!iconInfo) return null;
               
@@ -71,49 +75,51 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
       <CardContent className="pt-2">
         <p className="text-sm text-muted-foreground mb-4">{creator.description}</p>
         
-        <div className="mb-4 h-28">
-          <ChartContainer
-            config={{
-              followers: { color: creator.color, label: "Followers" }
-            }}
-            className="h-full aspect-auto"
-          >
-            <AreaChart
-              data={creator.growthData}
-              margin={{ top: 5, right: 5, left: 0, bottom: 5 }}
+        {creator.growthData && (
+          <div className="mb-4 h-28">
+            <ChartContainer
+              config={{
+                followers: { color: creator.color || "#4f46e5", label: "Followers" }
+              }}
+              className="h-full aspect-auto"
             >
-              <defs>
-                <linearGradient id={`gradient-${index}`} x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0%" stopColor={creator.color} stopOpacity={0.6} />
-                  <stop offset="100%" stopColor={creator.color} stopOpacity={0} />
-                </linearGradient>
-              </defs>
-              <XAxis 
-                dataKey="month" 
-                tick={{ fontSize: 10 }}
-                tickLine={false}
-                axisLine={false}
-              />
-              <YAxis 
-                tick={{ fontSize: 10 }}
-                tickFormatter={formatYAxis}
-                tickLine={false}
-                axisLine={false}
-                width={30}
-              />
-              <ChartTooltip
-                content={<ChartTooltipContent labelFormatter={(label) => `${label} 2023`} />}
-              />
-              <Area 
-                type="monotone" 
-                dataKey="followers" 
-                stroke={creator.color} 
-                fillOpacity={1}
-                fill={`url(#gradient-${index})`}
-              />
-            </AreaChart>
-          </ChartContainer>
-        </div>
+              <AreaChart
+                data={creator.growthData}
+                margin={{ top: 5, right: 5, left: 0, bottom: 5 }}
+              >
+                <defs>
+                  <linearGradient id={`gradient-${index}`} x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="0%" stopColor={creator.color || "#4f46e5"} stopOpacity={0.6} />
+                    <stop offset="100%" stopColor={creator.color || "#4f46e5"} stopOpacity={0} />
+                  </linearGradient>
+                </defs>
+                <XAxis 
+                  dataKey="month" 
+                  tick={{ fontSize: 10 }}
+                  tickLine={false}
+                  axisLine={false}
+                />
+                <YAxis 
+                  tick={{ fontSize: 10 }}
+                  tickFormatter={formatYAxis}
+                  tickLine={false}
+                  axisLine={false}
+                  width={30}
+                />
+                <ChartTooltip
+                  content={<ChartTooltipContent labelFormatter={(label) => `${label} 2023`} />}
+                />
+                <Area 
+                  type="monotone" 
+                  dataKey="followers" 
+                  stroke={creator.color || "#4f46e5"} 
+                  fillOpacity={1}
+                  fill={`url(#gradient-${index})`}
+                />
+              </AreaChart>
+            </ChartContainer>
+          </div>
+        )}
         
         <div className="grid grid-cols-4 gap-2 mt-4">
           <div className="bg-gray-50 dark:bg-gray-800 p-3 rounded-lg">
@@ -146,12 +152,12 @@ const CreatorCard: React.FC<CreatorCardProps> = ({ creator, index }) => {
           </div>
         </div>
         
-        {/* Fix for the expertise/topCategories rendering */}
-        {(creator.expertise || creator.topCategories) && (
+        {/* Only render expertise section if there are items to show */}
+        {expertise && expertise.length > 0 && (
           <div className="mt-4">
             <p className="text-xs text-gray-500 mb-2">Expertise</p>
             <div className="flex flex-wrap gap-1">
-              {(creator.expertise || creator.topCategories || []).slice(0, 3).map((item, i) => (
+              {expertise.slice(0, 3).map((item, i) => (
                 <span key={i} className="text-xs px-2 py-1 bg-gray-100 dark:bg-gray-800 rounded-full">
                   {item}
                 </span>

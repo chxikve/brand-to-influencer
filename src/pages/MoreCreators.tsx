@@ -8,6 +8,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAtom } from 'jotai';
 import { creatorsAtom } from '@/services/creatorService';
+import { Provider } from 'jotai';
 
 const MoreCreators = () => {
   const [creators] = useAtom(creatorsAtom);
@@ -80,4 +81,11 @@ const MoreCreators = () => {
   );
 };
 
-export default MoreCreators;
+// Wrap the component with Jotai Provider to ensure atoms work correctly
+const MoreCreatorsWithProvider = () => (
+  <Provider>
+    <MoreCreators />
+  </Provider>
+);
+
+export default MoreCreatorsWithProvider;
