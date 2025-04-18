@@ -53,17 +53,30 @@ const CreatorsManagement = () => {
 
   const handleSave = (data: Creator) => {
     if (editingCreator) {
-      setCreators(creators.map(c => c.id === editingCreator.id ? { ...data, id: c.id } : c));
-      toast({
-        title: "Changes saved",
-        description: "Creator information has been updated successfully."
-      });
+      // Check if this is an update to existing creator or adding a new one
+      if (creators.some(c => c.id === editingCreator.id)) {
+        // Update existing creator
+        setCreators(creators.map(c => c.id === editingCreator.id ? { ...data, id: c.id } : c));
+        toast({
+          title: "Changes saved",
+          description: "Creator information has been updated successfully."
+        });
+      } else {
+        // Add new creator
+        setCreators([...creators, { ...data, id: editingCreator.id }]);
+        toast({
+          title: "Creator added",
+          description: "New creator has been added successfully."
+        });
+      }
     }
+    setIsEditDialogOpen(false);
+    setEditingCreator(null);
   };
 
   const handleAdd = () => {
     const newCreator: Creator = {
-      id: creators.length + 1,
+      id: creators.length > 0 ? Math.max(...creators.map(c => c.id)) + 1 : 1,
       name: '',
       email: '',
       followers: '0',
@@ -151,7 +164,7 @@ const CreatorsManagement = () => {
             setEditingCreator(null);
           }}
           onSave={handleSave}
-          title={editingCreator.id === creators.length + 1 ? "Add Creator" : "Edit Creator"}
+          title={editingCreator.id === (creators.length > 0 ? Math.max(...creators.map(c => c.id)) + 1 : 1) ? "Add Creator" : "Edit Creator"}
           fields={[
             { name: 'name', label: 'Name', value: editingCreator.name },
             { name: 'email', label: 'Email', type: 'email', value: editingCreator.email },
