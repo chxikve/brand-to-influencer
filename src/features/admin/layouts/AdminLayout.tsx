@@ -23,7 +23,8 @@ import {
   FileText,
   BarChart3,
   LogOut,
-  ChevronRight
+  ChevronRight,
+  Home
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useAuth } from '@/hooks/useAuth';
@@ -54,10 +55,18 @@ const AdminLayout = () => {
           <SidebarContent>
             <SidebarGroup>
               <SidebarGroupLabel className="text-xs uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                Main
+                Navigation
               </SidebarGroupLabel>
               <SidebarGroupContent>
                 <SidebarMenu>
+                  <SidebarMenuItem>
+                    <SidebarMenuButton asChild>
+                      <Link to="/" className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
+                        <Home className="h-5 w-5 text-green-600 dark:text-green-400" />
+                        <span>Back to Home</span>
+                      </Link>
+                    </SidebarMenuButton>
+                  </SidebarMenuItem>
                   <SidebarMenuItem>
                     <SidebarMenuButton asChild>
                       <Link to="/admin" className="flex items-center space-x-3 px-3 py-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors">
