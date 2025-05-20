@@ -3,6 +3,13 @@ import React from 'react';
 import { ArrowRight, Star, Camera, Youtube, Palette } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
+import { 
+  Carousel, 
+  CarouselContent, 
+  CarouselItem, 
+  CarouselPrevious, 
+  CarouselNext 
+} from '@/components/ui/carousel';
 
 const Hero = () => {
   return (
@@ -12,11 +19,11 @@ const Hero = () => {
           <div className="animate-on-scroll">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-sponsify-primary/10 dark:bg-sponsify-primary/20 text-sponsify-primary dark:text-sponsify-accent px-3 py-1 rounded-full text-sm font-medium inline-flex items-center">
-                <Star className="w-4 h-4 mr-1" /> For Creators
+                <Star className="w-4 h-4 mr-1" /> Featured Partnerships
               </div>
             </div>
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              Monetize Your <span className="text-gradient">Creativity</span> With Brand <span className="text-gradient">Partnerships</span>
+              <span className="text-gradient">Sponsify</span> helps brands, events and content creators easily and efficiently discover valuable <span className="text-gradient">partnerships</span>
             </h1>
             <p className="text-sponsify-secondary dark:text-gray-300 text-lg mb-8 max-w-lg">
               Join thousands of creators who use Sponsify to find and manage brand deals, negotiate better rates, and grow their creative business.
@@ -59,48 +66,83 @@ const Hero = () => {
           </div>
           
           <div className="hidden lg:block animate-on-scroll delay-200">
-            <div className="relative">
-              <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1616469829941-c7200edec809?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                  alt="Creator with camera" 
-                  className="w-full h-auto rounded-lg shadow-lg"
-                />
+            <Carousel className="w-full">
+              <CarouselContent>
+                <CarouselItem>
+                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                      alt="Creator working on laptop" 
+                      className="w-full h-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                      alt="Tech and collaboration" 
+                      className="w-full h-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                      alt="Content creation" 
+                      className="w-full h-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                      alt="Team collaboration" 
+                      className="w-full h-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                </CarouselItem>
+              </CarouselContent>
+              <div className="flex justify-center mt-4">
+                <CarouselPrevious className="relative -left-2" />
+                <CarouselNext className="relative -right-2" />
               </div>
-              
-              <div className="absolute -bottom-12 -left-12 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float">
-                <div className="flex items-center gap-3 p-1">
-                  <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
-                    <Camera className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold">Photography</p>
-                    <p className="text-xs text-sponsify-secondary dark:text-gray-400">240+ brands</p>
-                  </div>
+            </Carousel>
+            
+            <div className="absolute -bottom-12 -left-12 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float">
+              <div className="flex items-center gap-3 p-1">
+                <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
+                  <Camera className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">Photography</p>
+                  <p className="text-xs text-sponsify-secondary dark:text-gray-400">240+ brands</p>
                 </div>
               </div>
-              
-              <div className="absolute top-10 -right-8 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "1s"}}>
-                <div className="flex items-center gap-3 p-1">
-                  <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
-                    <Youtube className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold">Video Content</p>
-                    <p className="text-xs text-sponsify-secondary dark:text-gray-400">370+ brands</p>
-                  </div>
+            </div>
+            
+            <div className="absolute top-10 -right-8 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "1s"}}>
+              <div className="flex items-center gap-3 p-1">
+                <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
+                  <Youtube className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">Video Content</p>
+                  <p className="text-xs text-sponsify-secondary dark:text-gray-400">370+ brands</p>
                 </div>
               </div>
-              
-              <div className="absolute bottom-20 right-10 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "2s"}}>
-                <div className="flex items-center gap-3 p-1">
-                  <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
-                    <Palette className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
-                  </div>
-                  <div>
-                    <p className="text-sm font-semibold">Digital Art</p>
-                    <p className="text-xs text-sponsify-secondary dark:text-gray-400">180+ brands</p>
-                  </div>
+            </div>
+            
+            <div className="absolute bottom-20 right-10 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "2s"}}>
+              <div className="flex items-center gap-3 p-1">
+                <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
+                  <Palette className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">Digital Art</p>
+                  <p className="text-xs text-sponsify-secondary dark:text-gray-400">180+ brands</p>
                 </div>
               </div>
             </div>

@@ -1,6 +1,7 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { ArrowRight } from 'lucide-react';
 
 const HeroBanner = () => {
   return (
@@ -12,7 +13,7 @@ const HeroBanner = () => {
             Drive authentic engagement and increase your ROI with creator partnerships tailored to your brand
           </p>
           <Button size="lg" className="bg-primary hover:bg-primary/90">
-            Start Your Campaign
+            Start Your Campaign <ArrowRight className="ml-2 h-5 w-5" />
           </Button>
         </div>
       </div>
