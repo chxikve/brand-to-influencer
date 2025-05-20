@@ -16,7 +16,7 @@ const Hero = () => {
     <section className="pt-28 pb-20 md:pt-36 md:pb-32 relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-6 items-center">
-          <div className="animate-on-scroll">
+          <div className="animate-on-scroll text-left">
             <div className="flex items-center gap-2 mb-4">
               <div className="bg-sponsify-primary/10 dark:bg-sponsify-primary/20 text-sponsify-primary dark:text-sponsify-accent px-3 py-1 rounded-full text-sm font-medium inline-flex items-center">
                 <Star className="w-4 h-4 mr-1" /> Featured Partnerships
@@ -71,8 +71,8 @@ const Hero = () => {
                 <CarouselItem>
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1649972904349-6e44c42644a7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Creator working on laptop" 
+                      src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                      alt="Female creator with laptop" 
                       className="w-full h-auto rounded-lg shadow-lg"
                     />
                   </div>
@@ -80,8 +80,8 @@ const Hero = () => {
                 <CarouselItem>
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1488590528505-98d2b5aba04b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Tech and collaboration" 
+                      src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                      alt="Male content creator" 
                       className="w-full h-auto rounded-lg shadow-lg"
                     />
                   </div>
@@ -90,7 +90,7 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <img 
                       src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Content creation" 
+                      alt="Content creator working" 
                       className="w-full h-auto rounded-lg shadow-lg"
                     />
                   </div>
@@ -98,8 +98,17 @@ const Hero = () => {
                 <CarouselItem>
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <img 
-                      src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Team collaboration" 
+                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                      alt="Team of creators collaboration" 
+                      className="w-full h-auto rounded-lg shadow-lg"
+                    />
+                  </div>
+                </CarouselItem>
+                <CarouselItem>
+                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
+                    <img 
+                      src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                      alt="Male creator working" 
                       className="w-full h-auto rounded-lg shadow-lg"
                     />
                   </div>
