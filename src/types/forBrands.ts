@@ -17,6 +17,10 @@ export interface Event {
   day: string;
   month: string;
   details: string;
+  image: string; // Added image field
+  organizer?: string;
+  attendees?: string;
+  sponsorshipLevels?: { name: string; price: string; benefits: string[] }[];
 }
 
 export interface LocationCategory {
