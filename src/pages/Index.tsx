@@ -8,6 +8,7 @@ import About from '@/components/About';
 import Testimonials from '@/components/Testimonials';
 import CreatorProfiles from '@/components/CreatorProfiles';
 import Footer from '@/components/Footer';
+import EventSponsorship from '@/components/EventSponsorship';
 
 const Index = () => {
   useEffect(() => {
@@ -42,6 +43,7 @@ const Index = () => {
         <Hero />
         <FeaturedSponsors />
         <HowItWorks />
+        <EventSponsorship />
         <CreatorProfiles />
         <About />
         <Testimonials />
