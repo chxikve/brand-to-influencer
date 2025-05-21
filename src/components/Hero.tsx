@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight, Star, Youtube, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -73,9 +72,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                        alt="YouTube creator with camera" 
-                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
+                        src="https://images.unsplash.com/photo-1501286353178-1ec881214838?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Fun YouTube creator content with monkey" 
+                        className="w-full h-[520px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         <Youtube className="h-4 w-4 text-red-600" />
@@ -88,9 +87,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                        alt="YouTube content creator filming" 
-                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
+                        src="https://images.unsplash.com/photo-1582562124811-c09040d0a901?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Fun YouTube content with cat" 
+                        className="w-full h-[520px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         <Youtube className="h-4 w-4 text-red-600" />
@@ -105,9 +104,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                        alt="TikTok content creator" 
-                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
+                        src="https://images.unsplash.com/photo-1618160702438-9b02ab6515c9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="TikTok content creator with fruit" 
+                        className="w-full h-[520px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         {/* Using a custom SVG for TikTok instead */}
@@ -124,8 +123,8 @@ const Hero = () => {
                     <div className="relative">
                       <img 
                         src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                        alt="TikTok dance creator" 
-                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
+                        alt="Fun TikTok content with kitten" 
+                        className="w-full h-[520px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         {/* Using a custom SVG for TikTok instead */}
@@ -143,28 +142,13 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                        alt="Brand event with audience" 
-                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
+                        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Fun event with tabby cat" 
+                        className="w-full h-[520px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         <Calendar className="h-4 w-4 text-blue-600" />
                         <span className="text-sm font-medium">Live Events</span>
-                      </div>
-                    </div>
-                  </div>
-                </CarouselItem>
-                <CarouselItem>
-                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
-                    <div className="relative">
-                      <img 
-                        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                        alt="Brand sponsorship event" 
-                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
-                      />
-                      <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
-                        <Calendar className="h-4 w-4 text-blue-600" />
-                        <span className="text-sm font-medium">Sponsorship</span>
                       </div>
                     </div>
                   </div>
