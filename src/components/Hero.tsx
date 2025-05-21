@@ -73,9 +73,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        src="https://images.unsplash.com/photo-1581090464777-f3220bbe1b8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                         alt="YouTube creator with camera" 
-                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         <Youtube className="h-4 w-4 text-red-600" />
@@ -88,9 +88,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                         alt="YouTube content creator filming" 
-                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         <Youtube className="h-4 w-4 text-red-600" />
@@ -105,9 +105,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        src="https://images.unsplash.com/photo-1518495973542-4542c06a5843?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                         alt="TikTok content creator" 
-                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         {/* Using a custom SVG for TikTok instead */}
@@ -123,9 +123,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1581101767113-7b6ca98102ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        src="https://images.unsplash.com/photo-1535268647677-300dbf3d78d1?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                         alt="TikTok dance creator" 
-                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         {/* Using a custom SVG for TikTok instead */}
@@ -143,9 +143,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        src="https://images.unsplash.com/photo-1472396961693-142e6e269027?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                         alt="Brand event with audience" 
-                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         <Calendar className="h-4 w-4 text-blue-600" />
@@ -158,9 +158,9 @@ const Hero = () => {
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
                     <div className="relative">
                       <img 
-                        src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                         alt="Brand sponsorship event" 
-                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                        className="w-full h-[450px] object-cover rounded-lg shadow-lg"
                       />
                       <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
                         <Calendar className="h-4 w-4 text-blue-600" />
