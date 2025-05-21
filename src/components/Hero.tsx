@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { ArrowRight, Star, Camera, Youtube, Palette } from 'lucide-react';
+import { ArrowRight, Star, Youtube, TikTok, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { 
@@ -68,49 +68,99 @@ const Hero = () => {
           <div className="hidden lg:block animate-on-scroll delay-200">
             <Carousel className="w-full">
               <CarouselContent>
+                {/* YouTube Creators */}
                 <CarouselItem>
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Female creator with laptop" 
-                      className="w-full h-auto rounded-lg shadow-lg"
-                    />
+                    <div className="relative">
+                      <img 
+                        src="https://images.unsplash.com/photo-1605152276897-4f618f831968?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="YouTube creator with camera" 
+                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
+                        <Youtube className="h-4 w-4 text-red-600" />
+                        <span className="text-sm font-medium">YouTube Creator</span>
+                      </div>
+                    </div>
                   </div>
                 </CarouselItem>
                 <CarouselItem>
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Male content creator" 
-                      className="w-full h-auto rounded-lg shadow-lg"
-                    />
+                    <div className="relative">
+                      <img 
+                        src="https://images.unsplash.com/photo-1598550476439-6847785fcea6?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="YouTube content creator filming" 
+                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
+                        <Youtube className="h-4 w-4 text-red-600" />
+                        <span className="text-sm font-medium">Video Content</span>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                {/* TikTok Creators */}
+                <CarouselItem>
+                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
+                    <div className="relative">
+                      <img 
+                        src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="TikTok content creator" 
+                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
+                        <TikTok className="h-4 w-4 text-black dark:text-white" />
+                        <span className="text-sm font-medium">TikTok Creator</span>
+                      </div>
+                    </div>
                   </div>
                 </CarouselItem>
                 <CarouselItem>
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Content creator working" 
-                      className="w-full h-auto rounded-lg shadow-lg"
-                    />
+                    <div className="relative">
+                      <img 
+                        src="https://images.unsplash.com/photo-1581101767113-7b6ca98102ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="TikTok dance creator" 
+                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
+                        <TikTok className="h-4 w-4 text-black dark:text-white" />
+                        <span className="text-sm font-medium">Short Form</span>
+                      </div>
+                    </div>
+                  </div>
+                </CarouselItem>
+
+                {/* Events */}
+                <CarouselItem>
+                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
+                    <div className="relative">
+                      <img 
+                        src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Brand event with audience" 
+                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
+                        <Calendar className="h-4 w-4 text-blue-600" />
+                        <span className="text-sm font-medium">Live Events</span>
+                      </div>
+                    </div>
                   </div>
                 </CarouselItem>
                 <CarouselItem>
                   <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Team of creators collaboration" 
-                      className="w-full h-auto rounded-lg shadow-lg"
-                    />
-                  </div>
-                </CarouselItem>
-                <CarouselItem>
-                  <div className="glass-card dark:glass-card-dark rounded-2xl p-4 overflow-hidden">
-                    <img 
-                      src="https://images.unsplash.com/photo-1581092795360-fd1ca04f0952?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                      alt="Male creator working" 
-                      className="w-full h-auto rounded-lg shadow-lg"
-                    />
+                    <div className="relative">
+                      <img 
+                        src="https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
+                        alt="Brand sponsorship event" 
+                        className="w-full h-64 object-cover rounded-lg shadow-lg"
+                      />
+                      <div className="absolute bottom-3 left-3 bg-white dark:bg-gray-800 px-3 py-1 rounded-full flex items-center gap-1">
+                        <Calendar className="h-4 w-4 text-blue-600" />
+                        <span className="text-sm font-medium">Sponsorship</span>
+                      </div>
+                    </div>
                   </div>
                 </CarouselItem>
               </CarouselContent>
@@ -123,18 +173,6 @@ const Hero = () => {
             <div className="absolute -bottom-12 -left-12 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float">
               <div className="flex items-center gap-3 p-1">
                 <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
-                  <Camera className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
-                </div>
-                <div>
-                  <p className="text-sm font-semibold">Photography</p>
-                  <p className="text-xs text-sponsify-secondary dark:text-gray-400">240+ brands</p>
-                </div>
-              </div>
-            </div>
-            
-            <div className="absolute top-10 -right-8 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "1s"}}>
-              <div className="flex items-center gap-3 p-1">
-                <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
                   <Youtube className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
                 </div>
                 <div>
@@ -144,13 +182,25 @@ const Hero = () => {
               </div>
             </div>
             
+            <div className="absolute top-10 -right-8 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "1s"}}>
+              <div className="flex items-center gap-3 p-1">
+                <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
+                  <TikTok className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
+                </div>
+                <div>
+                  <p className="text-sm font-semibold">Short Form</p>
+                  <p className="text-xs text-sponsify-secondary dark:text-gray-400">240+ brands</p>
+                </div>
+              </div>
+            </div>
+            
             <div className="absolute bottom-20 right-10 glass-card dark:glass-card-dark rounded-xl p-3 shadow-lg animate-float" style={{animationDelay: "2s"}}>
               <div className="flex items-center gap-3 p-1">
                 <div className="flex items-center justify-center w-10 h-10 bg-sponsify-primary/10 dark:bg-sponsify-primary/20 rounded-full">
-                  <Palette className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
+                  <Calendar className="w-5 h-5 text-sponsify-primary dark:text-sponsify-accent" />
                 </div>
                 <div>
-                  <p className="text-sm font-semibold">Digital Art</p>
+                  <p className="text-sm font-semibold">Events</p>
                   <p className="text-xs text-sponsify-secondary dark:text-gray-400">180+ brands</p>
                 </div>
               </div>
