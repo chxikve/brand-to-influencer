@@ -1,4 +1,3 @@
-
 import type { Config } from "tailwindcss";
 
 export default {
@@ -70,21 +69,29 @@ export default {
 				sponsify: {
 					light: '#F5F7FA',
 					dark: '#161A23',
-					primary: '#2D7FF9',
+					primary: '#4F46E5', // Primary blue from brand guide
 					secondary: '#5D6B98',
-					accent: '#18BFFF',
+					accent: '#00C4FF', // Secondary cyan from brand guide
 					success: '#34D399',
 					warning: '#FBBF24',
 					error: '#F87171',
 					background: '#FFFFFF',
 					'card-light': '#F9FAFC',
-					'card-dark': '#F5F7FA'
+					'card-dark': '#F5F7FA',
+					pink: '#FF3B82', // Secondary pink from brand guide
+					orange: '#FF8C00', // Secondary orange from brand guide
+					lime: '#ADFF2F' // Primary lime green from brand guide
 				}
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
 				sm: 'calc(var(--radius) - 4px)'
+			},
+			fontFamily: {
+				sans: ['Inter', 'sans-serif'],
+				montserrat: ['Montserrat', 'sans-serif'],
+				helvetica: ['Helvetica Neue', 'Arial', 'sans-serif']
 			},
 			keyframes: {
 				'accordion-down': {
