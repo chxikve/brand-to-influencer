@@ -11,19 +11,19 @@ interface CarouselCardProps {
 const CarouselCard = ({ imageSrc, imageAlt, iconComponent, label }: CarouselCardProps) => {
   return (
     <div className="group relative">
-      <div className="glass-card dark:glass-card-dark rounded-3xl p-6 overflow-hidden shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105 border border-white/10 hover:border-white/20">
-        <div className="relative overflow-hidden rounded-2xl">
+      <div className="bg-slate-800/80 border border-slate-700/50 rounded-2xl p-4 overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-[1.02] backdrop-blur-sm">
+        <div className="relative overflow-hidden rounded-xl">
           <img 
             src={imageSrc}
             alt={imageAlt}
-            className="w-full h-[500px] object-cover transition-transform duration-700 group-hover:scale-110"
+            className="w-full h-[400px] object-cover transition-transform duration-500 group-hover:scale-105"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
-          <div className="absolute bottom-4 left-4 bg-white/95 dark:bg-gray-800/95 backdrop-blur-sm px-4 py-2 rounded-full flex items-center gap-2 shadow-lg border border-white/20">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+          <div className="absolute bottom-3 left-3 bg-white/90 backdrop-blur-sm px-3 py-2 rounded-lg flex items-center gap-2 shadow-md">
             {iconComponent}
-            <span className="text-sm font-semibold">{label}</span>
+            <span className="text-sm font-medium text-gray-900">{label}</span>
           </div>
-          <div className="absolute top-4 right-4 w-3 h-3 bg-green-400 rounded-full border-2 border-white animate-pulse"></div>
+          <div className="absolute top-3 right-3 w-2 h-2 bg-green-400 rounded-full"></div>
         </div>
       </div>
     </div>
