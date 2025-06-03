@@ -1,71 +1,66 @@
 
 import React from 'react';
-import { ArrowRight, Zap, CheckCircle, Star } from 'lucide-react';
+import { ArrowRight, CheckCircle, Sparkles, Zap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 
 const HeroContent = () => {
   return (
-    <div className="animate-on-scroll text-left space-y-8 max-w-2xl">
-      {/* Clean Logo */}
-      <div className="flex items-center gap-3 mb-12">
-        <div className="w-12 h-12 bg-gradient-to-br from-sponsify-accent to-sponsify-primary rounded-xl flex items-center justify-center">
-          <Zap className="w-6 h-6 text-white" />
+    <div className="max-w-2xl">
+      {/* Logo and brand */}
+      <div className="flex items-center gap-3 mb-8">
+        <div className="w-10 h-10 bg-gradient-to-br from-sponsify-accent to-sponsify-primary rounded-xl flex items-center justify-center">
+          <Zap className="w-5 h-5 text-white" />
         </div>
-        <div>
-          <span className="text-2xl font-bold bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent tracking-tight">
-            SPONSIFY
-          </span>
-          <span className="block text-xs text-gray-400 font-medium tracking-wider">
-            AI-POWERED PLATFORM
-          </span>
-        </div>
+        <span className="text-xl font-bold text-gray-900 dark:text-white tracking-tight">
+          SPONSIFY
+        </span>
       </div>
       
-      {/* Simple Badge */}
+      {/* Badge */}
       <div className="inline-flex items-center gap-2 bg-sponsify-accent/10 border border-sponsify-accent/20 text-sponsify-accent px-4 py-2 rounded-full text-sm font-medium mb-8">
-        <div className="w-2 h-2 bg-sponsify-accent rounded-full"></div>
-        AI-Powered Talent Discovery
+        <Sparkles className="w-4 h-4" />
+        AI-Powered Platform
       </div>
       
-      {/* Clean Typography */}
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-8 leading-tight text-white">
+      {/* Main headline */}
+      <h1 className="text-5xl lg:text-6xl font-bold mb-6 text-gray-900 dark:text-white leading-tight">
         Connect brands with creators{' '}
         <span className="bg-gradient-to-r from-sponsify-accent to-sponsify-primary bg-clip-text text-transparent">
           effortlessly
         </span>
       </h1>
       
-      {/* Improved Description */}
-      <p className="text-gray-300 text-lg mb-10 leading-relaxed font-normal max-w-lg">
+      {/* Description */}
+      <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 leading-relaxed font-normal">
         Streamline partnerships with AI-powered matching. Connect, manage, and grow your business with the right creator collaborations.
       </p>
       
-      {/* Clean Feature List */}
-      <div className="flex flex-wrap gap-3 mb-12">
-        <div className="flex items-center gap-2 bg-slate-800/50 border border-slate-700/50 text-gray-300 px-3 py-2 rounded-full text-sm">
-          <CheckCircle className="w-4 h-4 text-green-400" />
-          Instant Matching
+      {/* Feature highlights */}
+      <div className="flex flex-wrap gap-4 mb-12">
+        <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+          <CheckCircle className="w-5 h-5 text-green-500" />
+          <span className="font-medium">Instant Matching</span>
         </div>
-        <div className="flex items-center gap-2 bg-slate-800/50 border border-slate-700/50 text-gray-300 px-3 py-2 rounded-full text-sm">
-          <Star className="w-4 h-4 text-blue-400" />
-          Verified Creators
+        <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+          <CheckCircle className="w-5 h-5 text-blue-500" />
+          <span className="font-medium">Verified Creators</span>
         </div>
-        <div className="flex items-center gap-2 bg-slate-800/50 border border-slate-700/50 text-gray-300 px-3 py-2 rounded-full text-sm">
-          <Zap className="w-4 h-4 text-purple-400" />
-          Real-time Analytics
+        <div className="flex items-center gap-2 text-gray-700 dark:text-gray-300">
+          <CheckCircle className="w-5 h-5 text-purple-500" />
+          <span className="font-medium">Real-time Analytics</span>
         </div>
       </div>
       
-      {/* Simplified Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 mb-12">
+      {/* CTA Buttons */}
+      <div className="flex flex-col sm:flex-row gap-4 mb-16">
         <Button 
           size="lg" 
           asChild 
-          className="bg-sponsify-accent hover:bg-sponsify-accent/90 text-white px-8 py-6 text-base rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+          className="bg-sponsify-accent hover:bg-sponsify-accent/90 text-white px-8 py-4 text-lg rounded-xl font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
         >
           <Link to="/register" className="inline-flex items-center justify-center">
-            Get Started
+            Get Started Free
             <ArrowRight className="ml-2 h-5 w-5" />
           </Link>
         </Button>
@@ -73,7 +68,7 @@ const HeroContent = () => {
           variant="outline" 
           size="lg" 
           asChild 
-          className="border-slate-600 text-gray-300 hover:bg-slate-800 hover:text-white px-8 py-6 text-base rounded-xl"
+          className="border-2 border-gray-200 dark:border-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-4 text-lg rounded-xl font-semibold"
         >
           <Link to="/for-creators">
             For Creators
@@ -81,37 +76,31 @@ const HeroContent = () => {
         </Button>
       </div>
       
-      {/* Clean Social Proof */}
-      <div className="flex items-center space-x-6">
+      {/* Social proof */}
+      <div className="flex items-center gap-8">
         <div className="flex -space-x-3">
           <img 
             src="https://images.unsplash.com/photo-1580489944761-15a19d654956?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
             alt="Creator" 
-            className="w-10 h-10 rounded-full border-2 border-slate-700"
+            className="w-12 h-12 rounded-full border-3 border-white dark:border-gray-800 shadow-sm"
           />
           <img 
             src="https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
             alt="Creator" 
-            className="w-10 h-10 rounded-full border-2 border-slate-700"
+            className="w-12 h-12 rounded-full border-3 border-white dark:border-gray-800 shadow-sm"
           />
           <img 
             src="https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80" 
             alt="Creator" 
-            className="w-10 h-10 rounded-full border-2 border-slate-700"
+            className="w-12 h-12 rounded-full border-3 border-white dark:border-gray-800 shadow-sm"
           />
-          <div className="w-10 h-10 rounded-full border-2 border-slate-700 bg-slate-800 flex items-center justify-center text-white font-medium text-sm">
+          <div className="w-12 h-12 rounded-full border-3 border-white dark:border-gray-800 bg-gray-100 dark:bg-gray-800 flex items-center justify-center text-gray-700 dark:text-gray-300 font-semibold text-sm shadow-sm">
             +1K
           </div>
         </div>
-        <div className="flex flex-col">
-          <div className="flex items-center gap-1 mb-1">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-yellow-400 text-yellow-400" />
-            ))}
-            <span className="text-sm text-gray-400 ml-1">5.0</span>
-          </div>
-          <p className="text-sm text-gray-400">
-            <span className="font-semibold text-sponsify-accent">2,500+</span> creators joined
+        <div>
+          <p className="text-gray-600 dark:text-gray-400 text-sm">
+            Join <span className="font-semibold text-sponsify-accent">2,500+ creators</span> already using Sponsify
           </p>
         </div>
       </div>
