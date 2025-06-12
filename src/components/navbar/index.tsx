@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
-import { useAuth } from '@/hooks/useAuth';  // Import useAuth
+import { useAuth } from '@/hooks/useAuth';
 import ThemeToggle from './ThemeToggle';
 import NavLinks from './NavLinks';
 import MobileMenu from './MobileMenu';
@@ -12,7 +12,7 @@ import MobileMenu from './MobileMenu';
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const { isAuthenticated, user } = useAuth();  // Get authentication state
+  const { isAuthenticated, user } = useAuth();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,18 +55,22 @@ const Navbar = () => {
       <div className="container mx-auto flex items-center justify-between">
         <Link 
           to="/" 
-          className="flex items-center space-x-2"
+          className="flex items-center space-x-3"
         >
-          <span className="text-xl font-bold text-sponsify-primary dark:text-sponsify-accent">SPONSIFY</span>
+          <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
+            <svg viewBox="0 0 24 24" className="w-5 h-5 text-blue-500" fill="currentColor">
+              <path d="M8.5 3C6.57 3 5 4.57 5 6.5S6.57 10 8.5 10c.88 0 1.69-.32 2.31-.87L14 12.31c-.55.62-.87 1.43-.87 2.31 0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5c-.88 0-1.69.32-2.31.87L10.82 8c.55-.62.87-1.43.87-2.31C11.69 4.57 10.12 3 8.5 3z" transform="scale(0.8) translate(3,3)"/>
+            </svg>
+          </div>
+          <span className="text-xl font-bold text-white">Sponsify</span>
         </Link>
 
         <div className="hidden md:flex items-center space-x-8">
           <NavLinks scrollToAbout={scrollToAbout} />
-          {/* Add Admin link for authenticated users */}
           {isAuthenticated && (
             <Link 
               to="/admin" 
-              className="text-sm font-medium text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors"
+              className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
             >
               Admin Panel
             </Link>
@@ -76,12 +80,12 @@ const Navbar = () => {
         <div className="hidden md:flex items-center space-x-4">
           <ThemeToggle />
           <Button variant="ghost" asChild>
-            <Link to="/login" className="text-sponsify-secondary dark:text-sponsify-accent text-sm font-medium">
+            <Link to="/login" className="text-gray-300 text-sm font-medium">
               Log in
             </Link>
           </Button>
           <Button variant="default" asChild>
-            <Link to="/register" className="text-sm font-medium dark:bg-sponsify-accent dark:hover:bg-sponsify-accent/90">
+            <Link to="/register" className="text-sm font-medium bg-yellow-400 hover:bg-yellow-500 text-black">
               Get Started
             </Link>
           </Button>
@@ -95,9 +99,9 @@ const Navbar = () => {
             size="icon"
           >
             {isMobileMenuOpen ? (
-              <X className="h-6 w-6 text-sponsify-primary dark:text-sponsify-accent" />
+              <X className="h-6 w-6 text-white" />
             ) : (
-              <Menu className="h-6 w-6 text-sponsify-primary dark:text-sponsify-accent" />
+              <Menu className="h-6 w-6 text-white" />
             )}
           </Button>
         </div>
