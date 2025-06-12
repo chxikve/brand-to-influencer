@@ -1,69 +1,63 @@
 
 import React from 'react';
-import { Users, Search, FileCheck, Zap } from 'lucide-react';
 
 const HowItWorks = () => {
   const steps = [
     {
-      icon: Users,
-      title: 'Create Your Profile',
-      description: 'Set up your brand profile with goals, target audience, and campaign preferences.',
-      number: '01'
+      number: '1',
+      title: 'Sign Up & Create Profile',
+      description: 'Whether you\'re a brand or a creator, getting up your profile to share with the audience you\'re looking for.',
+      color: 'bg-yellow-400 text-black'
     },
     {
-      icon: Search,
-      title: 'AI-Powered Matching',
-      description: 'Our algorithm finds creators that perfectly align with your brand values and audience.',
-      number: '02'
+      number: '2', 
+      title: 'Discover & Connect',
+      description: 'Browse profiles, use our smart filters, or let our matching algorithm suggest relevant partners. Send or receive proposals seamlessly.',
+      color: 'bg-purple-600 text-white'
     },
     {
-      icon: FileCheck,
-      title: 'Collaborate & Create',
-      description: 'Work directly with creators, manage campaigns, and track deliverables seamlessly.',
-      number: '03'
-    },
-    {
-      icon: Zap,
-      title: 'Measure Success',
-      description: 'Monitor performance with real-time analytics and optimize for better results.',
-      number: '04'
+      number: '3',
+      title: 'Collaborate & Grow',
+      description: 'Once a partnership is agreed, use Sponsify to manage the collaboration. Track progress, communicate effectively, and achieve your goals together.',
+      color: 'bg-pink-500 text-white'
     }
   ];
 
   return (
-    <section id="how-it-works" className="py-24">
+    <section className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-6 lg:px-12">
-        <div className="text-center max-w-3xl mx-auto mb-20">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900 dark:text-white">
-            Simple Process,{' '}
-            <span className="bg-gradient-to-r from-sponsify-accent to-sponsify-primary bg-clip-text text-transparent">
-              Powerful Results
-            </span>
+        <div className="text-center mb-16">
+          <h2 className="text-4xl md:text-5xl font-bold">
+            How <span className="text-yellow-400">Sponsify</span> Works
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 leading-relaxed">
-            From discovery to campaign execution, our platform streamlines every step
-          </p>
         </div>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {steps.map((step, index) => {
-            const IconComponent = step.icon;
-            return (
-              <div key={index} className="relative group">
-                <div className="border border-gray-200 dark:border-gray-700 rounded-2xl p-8 hover:border-sponsify-accent/30 dark:hover:border-sponsify-accent/30 transition-all duration-300">
-                  <div className="flex items-center gap-4 mb-6">
-                    <div className="w-14 h-14 bg-gradient-to-br from-sponsify-accent to-sponsify-primary rounded-xl flex items-center justify-center">
-                      <IconComponent className="w-7 h-7 text-white" />
-                    </div>
-                    <span className="text-2xl font-bold text-gray-300 dark:text-gray-600">{step.number}</span>
-                  </div>
-                  
-                  <h3 className="text-xl font-bold mb-4 text-gray-900 dark:text-white">{step.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-300 leading-relaxed">{step.description}</p>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          {/* Left side - Illustration */}
+          <div className="relative">
+            <div className="bg-yellow-100 rounded-2xl p-8 relative overflow-hidden">
+              <img 
+                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Person working on laptop"
+                className="w-full h-80 object-cover rounded-lg"
+              />
+            </div>
+          </div>
+          
+          {/* Right side - Steps */}
+          <div className="space-y-8">
+            {steps.map((step, index) => (
+              <div key={index} className="flex gap-6">
+                <div className={`w-12 h-12 ${step.color} rounded-full flex items-center justify-center font-bold text-lg flex-shrink-0`}>
+                  {step.number}
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold mb-3">{step.title}</h3>
+                  <p className="text-gray-300 leading-relaxed">{step.description}</p>
                 </div>
               </div>
-            );
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>

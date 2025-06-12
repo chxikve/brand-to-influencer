@@ -3,27 +3,48 @@ import React from 'react';
 
 const About = () => {
   return (
-    <section id="about" className="py-20 bg-white dark:bg-slate-900">
-      <div className="container mx-auto px-4">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-bold text-center mb-10 text-sponsify-primary dark:text-white">About Us</h2>
+    <section className="py-20 bg-gray-900 text-white">
+      <div className="container mx-auto px-6 lg:px-12">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Left side - Content */}
+          <div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              What is <span className="text-yellow-400">Sponsify</span>?
+            </h2>
+            
+            <div className="space-y-6 text-gray-300 leading-relaxed">
+              <p>
+                Sponsify is a marketplace designed to revolutionize the sponsorship landscape. We bridge the gap between brands and creative agents, be it content creators, event organizers, or sports teams, fostering meaningful collaborations without the traditional complexities.
+              </p>
+              
+              <div>
+                <p className="font-semibold text-white mb-2">For brands:</p>
+                <p>
+                  Sponsify offers a direct channel to authentic audience engagement through strategic partnerships. Whether you're looking to amplify your brand presence or align with specific content collaborations, we help you find the perfect match.
+                </p>
+              </div>
+              
+              <div>
+                <p className="font-semibold text-white mb-2">For creators and organizers:</p>
+                <p>
+                  Sponsify is your gateway to securing funding and support from brands that resonate with your goals and values.
+                </p>
+              </div>
+            </div>
+          </div>
           
-          <div className="space-y-6 text-sponsify-secondary dark:text-gray-300">
-            <p>
-              Sponsify is a marketplace that makes sponsorships simple, smart, and accessible. We connect brands with creators, influencers, and event organizers, helping both sides find the right partnerships without the usual hassle.
-            </p>
-            
-            <p>
-              For brands, Sponsify is a way to reach the right audience through real, engaging collaborations—whether it's social media content, live events, or digital sponsorships. For creators and organizers, it's an easy way to get funding and support from brands that align with their work.
-            </p>
-            
-            <p>
-              No more endless emails or complicated negotiations—our platform streamlines everything with smart matchmaking, clear communication tools, and data-driven insights to help both sides get the most out of every partnership.
-            </p>
-            
-            <p>
-              Whether you're a brand looking to make an impact or a creator ready to land your next big deal, Sponsify is here to make sponsorships effortless.
-            </p>
+          {/* Right side - Image */}
+          <div className="relative">
+            <div className="bg-gradient-to-br from-purple-600 to-blue-600 rounded-2xl p-8 relative overflow-hidden">
+              <div className="absolute top-4 left-4 bg-yellow-400 text-black px-3 py-1 rounded text-sm font-medium">
+                Marketplace
+              </div>
+              <img 
+                src="https://images.unsplash.com/photo-1556740758-90de374c12ad?ixlib=rb-4.0.3&auto=format&fit=crop&w=600&q=80"
+                alt="Creator working"
+                className="w-full h-80 object-cover rounded-lg mt-8"
+              />
+            </div>
           </div>
         </div>
       </div>

@@ -1,82 +1,80 @@
+
 import React from 'react';
-import { Link } from 'react-router-dom';
-import { Instagram, Twitter, Linkedin, Facebook } from 'lucide-react';
+import { Zap } from 'lucide-react';
+import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   return (
-    <footer className="bg-sponsify-light dark:bg-slate-900 pt-16 pb-8">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10">
-          <div className="lg:col-span-2">
-            <Link to="/" className="inline-block mb-6">
-              <span className="text-xl font-bold text-sponsify-primary dark:text-sponsify-accent">SPONSIFY</span>
-            </Link>
-            <p className="text-sponsify-secondary dark:text-gray-400 mb-6 max-w-md">
-              Connecting brands and creators through an innovative sponsorship marketplace. Simplify your sponsorship management with Sponsify.
-            </p>
-            <div className="flex space-x-4">
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
-                <Instagram className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
-                <Twitter className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
-                <Linkedin className="h-5 w-5" />
-              </a>
-              <a href="#" className="w-10 h-10 flex items-center justify-center rounded-full bg-white dark:bg-slate-800 text-sponsify-secondary dark:text-gray-300 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">
-                <Facebook className="h-5 w-5" />
-              </a>
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase mb-6 dark:text-white">Product</h3>
-            <ul className="space-y-4">
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Features</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Pricing</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">For Brands</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">For Creators</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase mb-6 dark:text-white">Company</h3>
-            <ul className="space-y-4">
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">About</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Careers</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Blog</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Contact</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-sm font-semibold uppercase mb-6 dark:text-white">Resources</h3>
-            <ul className="space-y-4">
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Help Center</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Platform Status</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Privacy Policy</Link></li>
-              <li><Link to="/" className="text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Terms of Service</Link></li>
-            </ul>
-          </div>
+    <>
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-center">
+        <div className="container mx-auto px-6 lg:px-12">
+          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+            Ready to Elevate Your Sponsorship Game?
+          </h2>
+          <p className="text-xl mb-8 max-w-2xl mx-auto opacity-90">
+            Join Sponsify today and discover a smarter way to build impactful partnerships.
+          </p>
+          <Button 
+            size="lg" 
+            className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 text-lg rounded-lg font-semibold"
+          >
+            Get Started Now
+          </Button>
         </div>
+      </section>
 
-        <div className="mt-16 pt-8 border-t border-sponsify-secondary/10 dark:border-gray-700">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="text-sm text-sponsify-secondary dark:text-gray-400">
-              © {new Date().getFullYear()} Sponsify. All rights reserved.
-            </p>
-            <div className="mt-4 md:mt-0">
-              <ul className="flex space-x-6">
-                <li><Link to="/" className="text-sm text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Privacy</Link></li>
-                <li><Link to="/" className="text-sm text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Terms</Link></li>
-                <li><Link to="/" className="text-sm text-sponsify-secondary dark:text-gray-400 hover:text-sponsify-primary dark:hover:text-sponsify-accent transition-colors">Cookies</Link></li>
+      {/* Footer */}
+      <footer className="bg-gray-900 text-white py-12">
+        <div className="container mx-auto px-6 lg:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {/* Logo and description */}
+            <div className="md:col-span-2">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-8 h-8 bg-yellow-400 rounded-lg flex items-center justify-center">
+                  <Zap className="w-4 h-4 text-black" />
+                </div>
+                <span className="text-xl font-bold">Sponsify</span>
+              </div>
+              <p className="text-gray-400 max-w-md">
+                Making partnerships smarter, simpler, and accessible to everyone.
+              </p>
+            </div>
+            
+            {/* Quick Links */}
+            <div>
+              <h4 className="font-semibold mb-4">Quick Links</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li><a href="#" className="hover:text-white transition-colors">Features</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">How It Works</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">Pricing</a></li>
+                <li><a href="#" className="hover:text-white transition-colors">For Creators</a></li>
+              </ul>
+            </div>
+            
+            {/* Contact */}
+            <div>
+              <h4 className="font-semibold mb-4">Contact</h4>
+              <ul className="space-y-2 text-gray-400">
+                <li>info@sponsify.com</li>
+                <li>+1 (555) 123-4567</li>
+                <li>Follow Us:</li>
+                <li className="flex gap-3">
+                  <span>📧</span>
+                  <span>🐦</span>
+                  <span>📘</span>
+                </li>
               </ul>
             </div>
           </div>
+          
+          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+            <p>&copy; 2024 Sponsify.ai. All rights reserved.</p>
+            <p className="mt-2">Privacy Policy | Terms of Service</p>
+          </div>
         </div>
-      </div>
-    </footer>
+      </footer>
+    </>
   );
 };
 

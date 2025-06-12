@@ -1,50 +1,54 @@
 
 import React from 'react';
-import { Instagram, Youtube, Facebook, Twitter, Linkedin, Github, Apple } from 'lucide-react';
+import { Zap, MessageSquare, TrendingUp } from 'lucide-react';
 
 const FeaturedSponsors = () => {
-  const sponsors = [
-    { name: 'Instagram', icon: Instagram, color: '#E1306C' },
-    { name: 'YouTube', icon: Youtube, color: '#FF0000' },
-    { name: 'Facebook', icon: Facebook, color: '#1877F2' },
-    { name: 'Twitter', icon: Twitter, color: '#1DA1F2' },
-    { name: 'LinkedIn', icon: Linkedin, color: '#0A66C2' },
-    { name: 'GitHub', icon: Github, color: '#333333' },
-    { name: 'Apple', icon: Apple, color: '#A2AAAD' },
+  const features = [
+    {
+      icon: Zap,
+      title: 'Smart Matchmaking',
+      description: 'Our algorithm connects brands and creators based on shared values, audience demographics, and goals.'
+    },
+    {
+      icon: MessageSquare,
+      title: 'Streamlined Communication',
+      description: 'Manage conversations, proposals, and agreements all in one place.'
+    },
+    {
+      icon: TrendingUp,
+      title: 'Data-Driven Insights',
+      description: 'Track performance and get accurate metrics to optimize your partnerships.'
+    }
   ];
 
   return (
-    <section className="py-20 border-t border-gray-200 dark:border-gray-800">
+    <section className="py-20 bg-gray-900 text-white">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-16">
-          <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Trusted by Industry Leaders
+          <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            Why Choose <span className="text-yellow-400">Sponsify</span>?
           </h2>
-          <p className="text-gray-600 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            Connect with top creators across all major platforms
-          </p>
         </div>
         
-        <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-8 items-center">
-          {sponsors.map((sponsor, index) => {
-            const IconComponent = sponsor.icon;
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+          {features.map((feature, index) => {
+            const IconComponent = feature.icon;
             return (
-              <div 
-                key={index} 
-                className="flex flex-col items-center p-4 rounded-xl border border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-600 transition-all duration-300"
-              >
-                <IconComponent 
-                  color={sponsor.color} 
-                  size={24} 
-                  strokeWidth={1.5}
-                  className="mb-2"
-                />
-                <span className="text-xs font-medium text-gray-600 dark:text-gray-400">
-                  {sponsor.name}
-                </span>
+              <div key={index} className="text-center">
+                <div className="w-16 h-16 bg-yellow-400 rounded-lg flex items-center justify-center mx-auto mb-6">
+                  <IconComponent className="w-8 h-8 text-black" />
+                </div>
+                <h3 className="text-xl font-bold mb-4">{feature.title}</h3>
+                <p className="text-gray-300 leading-relaxed">{feature.description}</p>
               </div>
             );
           })}
+        </div>
+        
+        <div className="text-center">
+          <p className="text-gray-300 text-lg max-w-4xl mx-auto leading-relaxed">
+            No more endless emails or complicated negotiations—our platform simplifies everything. Helping both sides save time. Whether you're a brand aiming to make unique or a creator ready for your next big deal, Sponsify is built to make sponsorships <span className="text-yellow-400 font-semibold">effortless</span>.
+          </p>
         </div>
       </div>
     </section>
