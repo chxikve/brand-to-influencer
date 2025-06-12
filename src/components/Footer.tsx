@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 
@@ -31,9 +30,7 @@ const Footer = () => {
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-4">
                 <div className="w-8 h-8 bg-black rounded-lg flex items-center justify-center">
-                  <svg viewBox="0 0 24 24" className="w-5 h-5 text-blue-500" fill="currentColor">
-                    <path d="M8.5 3C6.57 3 5 4.57 5 6.5S6.57 10 8.5 10c.88 0 1.69-.32 2.31-.87L14 12.31c-.55.62-.87 1.43-.87 2.31 0 1.93 1.57 3.5 3.5 3.5s3.5-1.57 3.5-3.5-1.57-3.5-3.5-3.5c-.88 0-1.69.32-2.31.87L10.82 8c.55-.62.87-1.43.87-2.31C11.69 4.57 10.12 3 8.5 3z" transform="scale(0.8) translate(3,3)"/>
-                  </svg>
+                  <span className="text-blue-500 font-bold text-lg">S</span>
                 </div>
                 <span className="text-xl font-bold">Sponsify</span>
               </div>
