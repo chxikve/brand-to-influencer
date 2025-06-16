@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
 
@@ -25,7 +24,7 @@ const HowItWorks = () => {
   ];
 
   return (
-    <section className="py-32 bg-white dark:bg-gray-950">
+    <section className="py-32 bg-transparent">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="text-center mb-20">
           <div className="inline-block text-sm font-semibold text-blue-600 dark:text-blue-400 mb-4 tracking-wide uppercase">

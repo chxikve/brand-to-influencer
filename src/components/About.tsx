@@ -1,9 +1,8 @@
-
 import React from 'react';
 
 const About = () => {
   return (
-    <section className="py-32 bg-white dark:bg-gray-950">
+    <section className="py-32 bg-transparent">
       <div className="container mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-2 gap-20 items-center">
           {/* Left side - Content */}
