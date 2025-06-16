@@ -4,7 +4,6 @@ import Navbar from '@/components/navbar';
 import Footer from '@/components/Footer';
 
 // Importing the refactored components
-import HeroBanner from '@/components/brands/HeroBanner';
 import BenefitsSection from '@/components/brands/BenefitsSection';
 import HowItWorksSection from '@/components/brands/HowItWorksSection';
 import FeaturedCreatorsSection from '@/components/brands/FeaturedCreatorsSection';
@@ -46,8 +45,7 @@ const ForBrands = () => {
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
-      <main>
-        <HeroBanner />
+      <main className="pt-20">
         <BenefitsSection />
         <HowItWorksSection />
         <FeaturedCreatorsSection 
