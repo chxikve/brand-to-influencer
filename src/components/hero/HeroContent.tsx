@@ -22,7 +22,7 @@ const HeroContent = () => {
       
       {/* Description */}
       <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
-        The modern platform that makes sponsorship partnerships simple, transparent, and profitable for everyone involved.
+        We connect brands with athletes, events, and content creators to create impactful sponsorships and authentic partnerships.
       </p>
       
       {/* CTA Buttons */}
