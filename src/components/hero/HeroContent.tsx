@@ -1,35 +1,62 @@
 
 import React from 'react';
 import { Button } from '@/components/ui/button';
+import { ArrowRight, Sparkles } from 'lucide-react';
 
 const HeroContent = () => {
   return (
-    <div className="text-center max-w-4xl mx-auto">
+    <div className="text-center max-w-5xl mx-auto">
+      {/* Badge */}
+      <div className="inline-flex items-center gap-2 bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 px-4 py-2 rounded-full text-sm font-medium mb-8 border border-blue-200 dark:border-blue-800">
+        <Sparkles className="w-4 h-4" />
+        AI-Powered Sponsorship Platform
+      </div>
+      
       {/* Main headline */}
-      <h1 className="text-6xl lg:text-7xl font-bold mb-8 leading-tight">
-        Sponsorships, <span className="text-yellow-400">Simplified.</span>
+      <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-6 leading-[1.1] tracking-tight">
+        Connect brands with creators,{' '}
+        <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+          effortlessly
+        </span>
       </h1>
       
       {/* Description */}
-      <p className="text-xl text-gray-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-        Sponsify connects brands with creators, influencers, and event organizers, making partnerships smart, simple, and accessible.
+      <p className="text-xl text-gray-600 dark:text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
+        The modern platform that makes sponsorship partnerships simple, transparent, and profitable for everyone involved.
       </p>
       
       {/* CTA Buttons */}
-      <div className="flex flex-col sm:flex-row gap-4 justify-center">
+      <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
         <Button 
           size="lg" 
-          className="bg-yellow-400 hover:bg-yellow-500 text-black px-8 py-4 text-lg rounded-lg font-semibold"
+          className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900 text-white px-8 py-4 text-lg rounded-2xl font-semibold h-14 shadow-lg"
         >
           Find Sponsors
+          <ArrowRight className="ml-2 h-5 w-5" />
         </Button>
         <Button 
           variant="outline" 
           size="lg" 
-          className="border-2 border-gray-600 text-white hover:bg-gray-800 px-8 py-4 text-lg rounded-lg font-semibold"
+          className="border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-4 text-lg rounded-2xl font-semibold h-14"
         >
           Become a Sponsor
         </Button>
+      </div>
+
+      {/* Stats */}
+      <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+        <div className="text-center">
+          <div className="text-3xl font-bold text-gray-900 dark:text-white">10k+</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Active Creators</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl font-bold text-gray-900 dark:text-white">500+</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Brands</div>
+        </div>
+        <div className="text-center">
+          <div className="text-3xl font-bold text-gray-900 dark:text-white">$2M+</div>
+          <div className="text-sm text-gray-600 dark:text-gray-400">Deals Closed</div>
+        </div>
       </div>
     </div>
   );

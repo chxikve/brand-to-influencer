@@ -14,7 +14,7 @@ const Index = () => {
   }, []);
   
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-white dark:bg-gray-950">
       <Navbar />
       <main>
         <Hero />
