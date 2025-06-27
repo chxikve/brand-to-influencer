@@ -1,80 +1,103 @@
 
-import React, { useEffect, useState } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import Navbar from '@/components/navbar';
 import Footer from '@/components/Footer';
-import CompanyDetailsModal from '@/components/CompanyDetailsModal';
+import { companies, Company } from '@/data/companies';
 import HeroSection from '@/components/creators/HeroSection';
 import SearchAndFilter from '@/components/creators/SearchAndFilter';
 import CompaniesGrid from '@/components/creators/CompaniesGrid';
 import BenefitsSection from '@/components/creators/BenefitsSection';
 import CallToActionSection from '@/components/creators/CallToActionSection';
-import { companies, Company } from '@/data/companies';
+import CompanyDetailsModal from '@/components/CompanyDetailsModal';
 
 const ForCreators = () => {
-  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchQuery, setSearchQuery] = useState('');
   const [industryFilter, setIndustryFilter] = useState('all');
+  const [selectedCompany, setSelectedCompany] = useState<Company | null>(null);
+
+  // Debug logging
+  useEffect(() => {
+    console.log('ForCreators component mounted');
+    console.log('Companies data:', companies);
+  }, []);
 
   // Get unique industries for filter
-  const industries = ['all', ...Array.from(new Set(companies.map(c => c.industry)))];
-  
-  // Filter companies based on search and industry
-  const filteredCompanies = companies.filter(company => {
-    const matchesSearch = company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         company.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         company.industry.toLowerCase().includes(searchQuery.toLowerCase());
-    const matchesIndustry = industryFilter === 'all' || company.industry === industryFilter;
-    return matchesSearch && matchesIndustry;
-  });
+  const industries = useMemo(() => {
+    const uniqueIndustries = Array.from(new Set(companies.map(company => company.industry)));
+    return ['all', ...uniqueIndustries];
+  }, []);
 
-  const handleViewCompanyDetails = (company: Company) => {
-    setSelectedCompany(company);
-    setIsModalOpen(true);
-  };
+  // Filter companies based on search and industry
+  const filteredCompanies = useMemo(() => {
+    console.log('Filtering companies with query:', searchQuery, 'industry:', industryFilter);
+    
+    return companies.filter(company => {
+      const matchesSearch = company.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          company.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                          company.industry.toLowerCase().includes(searchQuery.toLowerCase());
+      
+      const matchesIndustry = industryFilter === 'all' || company.industry === industryFilter;
+      
+      return matchesSearch && matchesIndustry;
+    });
+  }, [searchQuery, industryFilter]);
 
   // Calculate stats
-  const totalOpenCampaigns = companies.reduce((total, company) => {
-    return total + company.campaigns.filter(c => c.status === 'open').length;
-  }, 0);
+  const stats = useMemo(() => {
+    const totalCompanies = companies.length;
+    const totalOpenCampaigns = companies.reduce((sum, company) => 
+      sum + company.campaigns.filter(campaign => campaign.status === 'open').length, 0
+    );
+    const totalBudget = companies.reduce((sum, company) => {
+      const budgetNumber = parseInt(company.totalBudget.replace(/[^0-9]/g, ''));
+      return sum + budgetNumber;
+    }, 0);
 
-  const totalBudget = companies.reduce((total, company) => {
-    const budget = parseInt(company.totalBudget.replace(/[^\d]/g, ''));
-    return total + budget;
-  }, 0);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
+    console.log('Stats calculated:', { totalCompanies, totalOpenCampaigns, totalBudget });
     
+    return { totalCompanies, totalOpenCampaigns, totalBudget };
+  }, []);
+
+  const handleViewDetails = (company: Company) => {
+    console.log('Opening company details for:', company.name);
+    setSelectedCompany(company);
+  };
+
+  const handleCloseModal = () => {
+    setSelectedCompany(null);
+  };
+
+  // Animate elements on scroll
+  useEffect(() => {
     const animateOnScroll = () => {
       const elements = document.querySelectorAll('.animate-on-scroll');
-      
       elements.forEach(element => {
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
-        
         if (elementTop < window.innerHeight - elementVisible) {
           element.classList.add('in-view');
         }
       });
     };
-    
+
     window.addEventListener('scroll', animateOnScroll);
     setTimeout(animateOnScroll, 100);
     
     return () => window.removeEventListener('scroll', animateOnScroll);
   }, []);
 
+  console.log('Rendering ForCreators with filtered companies:', filteredCompanies.length);
+
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
       <main>
-        <HeroSection
-          totalCompanies={companies.length}
-          totalOpenCampaigns={totalOpenCampaigns}
-          totalBudget={totalBudget}
+        <HeroSection 
+          totalCompanies={stats.totalCompanies}
+          totalOpenCampaigns={stats.totalOpenCampaigns}
+          totalBudget={stats.totalBudget}
         />
-
+        
         <SearchAndFilter
           searchQuery={searchQuery}
           setSearchQuery={setSearchQuery}
@@ -82,24 +105,25 @@ const ForCreators = () => {
           setIndustryFilter={setIndustryFilter}
           industries={industries}
         />
-
+        
         <CompaniesGrid
           companies={filteredCompanies}
-          onViewDetails={handleViewCompanyDetails}
+          onViewDetails={handleViewDetails}
         />
-
+        
         <BenefitsSection />
-
         <CallToActionSection />
       </main>
       
       <Footer />
       
-      <CompanyDetailsModal
-        company={selectedCompany}
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
+      {selectedCompany && (
+        <CompanyDetailsModal
+          company={selectedCompany}
+          isOpen={!!selectedCompany}
+          onClose={handleCloseModal}
+        />
+      )}
     </div>
   );
 };

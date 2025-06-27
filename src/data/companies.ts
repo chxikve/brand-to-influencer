@@ -30,7 +30,7 @@ export const companies: Company[] = [
     name: 'TechFlow Solutions',
     logo: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=150&h=150&fit=crop&crop=center',
     industry: 'Technology',
-    description: 'Leading software development company specializing in AI and machine learning solutions.',
+    description: 'Leading software development company specializing in AI and machine learning solutions for businesses.',
     location: 'San Francisco, CA',
     website: 'techflow.com',
     employees: '500-1000',
@@ -55,6 +55,15 @@ export const companies: Company[] = [
         deadline: '2024-07-30',
         requirements: ['Software developers', 'Coding tutorials', 'GitHub presence'],
         status: 'open'
+      },
+      {
+        id: 'c3',
+        title: 'Tech Conference Sponsorship',
+        description: 'Partnership for major tech conference coverage.',
+        budget: '$75,000',
+        deadline: '2024-09-01',
+        requirements: ['Event coverage', 'Live streaming', '50K+ reach'],
+        status: 'open'
       }
     ]
   },
@@ -63,7 +72,7 @@ export const companies: Company[] = [
     name: 'FitLife Nutrition',
     logo: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=150&h=150&fit=crop&crop=center',
     industry: 'Health & Wellness',
-    description: 'Premium nutrition and supplement brand focused on natural, science-backed products.',
+    description: 'Premium nutrition and supplement brand focused on natural, science-backed products for active lifestyles.',
     location: 'Austin, TX',
     website: 'fitlifenutrition.com',
     employees: '100-250',
@@ -72,7 +81,7 @@ export const companies: Company[] = [
     activeCampaigns: 2,
     campaigns: [
       {
-        id: 'c3',
+        id: 'c4',
         title: 'Summer Fitness Challenge',
         description: 'Partner with fitness influencers for a 30-day transformation challenge.',
         budget: '$75,000',
@@ -81,13 +90,13 @@ export const companies: Company[] = [
         status: 'open'
       },
       {
-        id: 'c4',
+        id: 'c5',
         title: 'Plant-Based Protein Launch',
         description: 'Introduce our new plant-based protein line to health-conscious audiences.',
         budget: '$40,000',
         deadline: '2024-08-20',
         requirements: ['Health & wellness creators', 'Nutrition expertise', 'Recipe content'],
-        status: 'closed'
+        status: 'open'
       }
     ]
   },
@@ -96,7 +105,7 @@ export const companies: Company[] = [
     name: 'StyleForward',
     logo: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=150&h=150&fit=crop&crop=center',
     industry: 'Fashion',
-    description: 'Sustainable fashion brand creating trendy, eco-friendly clothing for modern consumers.',
+    description: 'Sustainable fashion brand creating trendy, eco-friendly clothing for modern, conscious consumers.',
     location: 'New York, NY',
     website: 'styleforward.com',
     employees: '50-100',
@@ -105,7 +114,7 @@ export const companies: Company[] = [
     activeCampaigns: 1,
     campaigns: [
       {
-        id: 'c5',
+        id: 'c6',
         title: 'Sustainable Fashion Awareness',
         description: 'Educate audiences about sustainable fashion while showcasing our eco-friendly collections.',
         budget: '$60,000',
@@ -120,7 +129,7 @@ export const companies: Company[] = [
     name: 'GameZone Studios',
     logo: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=150&h=150&fit=crop&crop=center',
     industry: 'Gaming',
-    description: 'Independent game development studio creating innovative mobile and PC games.',
+    description: 'Independent game development studio creating innovative mobile and PC games with engaging storylines.',
     location: 'Seattle, WA',
     website: 'gamezonestudios.com',
     employees: '25-50',
@@ -129,12 +138,21 @@ export const companies: Company[] = [
     activeCampaigns: 2,
     campaigns: [
       {
-        id: 'c6',
+        id: 'c7',
         title: 'New RPG Game Launch',
         description: 'Promote our upcoming fantasy RPG game to gaming communities.',
         budget: '$45,000',
         deadline: '2024-09-30',
         requirements: ['Gaming content creators', 'RPG gameplay', 'Streaming capability'],
+        status: 'open'
+      },
+      {
+        id: 'c8',
+        title: 'Mobile Game Beta Testing',
+        description: 'Get early feedback on our new mobile puzzle game.',
+        budget: '$25,000',
+        deadline: '2024-08-10',
+        requirements: ['Mobile gaming creators', 'Beta testing', 'Honest reviews'],
         status: 'open'
       }
     ]
@@ -153,7 +171,7 @@ export const companies: Company[] = [
     activeCampaigns: 1,
     campaigns: [
       {
-        id: 'c7',
+        id: 'c9',
         title: 'Smart Home Automation Series',
         description: 'Showcase how our smart home products make life easier and more sustainable.',
         budget: '$80,000',
@@ -168,7 +186,7 @@ export const companies: Company[] = [
     name: 'Wanderlust Travel Co.',
     logo: 'https://images.unsplash.com/photo-1488646953014-85cb44e25828?w=150&h=150&fit=crop&crop=center',
     industry: 'Travel & Tourism',
-    description: 'Boutique travel agency specializing in unique, off-the-beaten-path destinations and experiences.',
+    description: 'Boutique travel agency specializing in unique, off-the-beaten-path destinations and authentic experiences.',
     location: 'Miami, FL',
     website: 'wanderlusttravel.co',
     employees: '20-50',
@@ -177,7 +195,7 @@ export const companies: Company[] = [
     activeCampaigns: 0,
     campaigns: [
       {
-        id: 'c8',
+        id: 'c10',
         title: 'Hidden Gems Travel Series',
         description: 'Feature lesser-known travel destinations through engaging content and storytelling.',
         budget: '$70,000',
@@ -188,3 +206,5 @@ export const companies: Company[] = [
     ]
   }
 ];
+
+console.log('Companies data loaded:', companies.length, 'companies');
