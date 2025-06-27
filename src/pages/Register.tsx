@@ -8,16 +8,11 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { useToast } from '@/hooks/use-toast';
-import { Eye, EyeOff, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 
 const registerSchema = z.object({
   name: z.string().min(2, { message: 'Name must be at least 2 characters' }),
   email: z.string().email({ message: 'Please enter a valid email address' }),
-  password: z.string().min(8, { message: 'Password must be at least 8 characters' }),
-  confirmPassword: z.string().min(8, { message: 'Confirm password must be at least 8 characters' }),
-}).refine((data) => data.password === data.confirmPassword, {
-  message: "Passwords don't match",
-  path: ["confirmPassword"],
 });
 
 type RegisterFormValues = z.infer<typeof registerSchema>;
@@ -25,22 +20,17 @@ type RegisterFormValues = z.infer<typeof registerSchema>;
 const Register = () => {
   const navigate = useNavigate();
   const { toast } = useToast();
-  const [showPassword, setShowPassword] = useState(false);
-  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   
   const form = useForm<RegisterFormValues>({
     resolver: zodResolver(registerSchema),
     defaultValues: {
       name: '',
       email: '',
-      password: '',
-      confirmPassword: '',
     },
   });
   
   const onSubmit = async (values: RegisterFormValues) => {
     try {
-      // Here you would normally connect to your authentication service
       console.log('Register data:', values);
       
       // Simulate successful registration
@@ -48,7 +38,7 @@ const Register = () => {
       localStorage.setItem('user', JSON.stringify({ name: values.name, email: values.email }));
       
       toast({
-        title: "Account created!",
+        title: "Welcome to Sponsify!",
         description: "Your account has been created successfully.",
       });
       
@@ -80,9 +70,9 @@ const Register = () => {
         </Button>
         
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-sponsify-primary dark:text-white">Create an account</h2>
+          <h2 className="text-3xl font-bold text-sponsify-primary dark:text-white">Join Sponsify</h2>
           <p className="mt-2 text-sm text-sponsify-secondary dark:text-gray-400">
-            Join Sponsify today and connect with brands
+            Start connecting with brands and creators today
           </p>
         </div>
         
@@ -95,7 +85,7 @@ const Register = () => {
                 <FormItem>
                   <FormLabel>Full Name</FormLabel>
                   <FormControl>
-                    <Input placeholder="John Doe" {...field} />
+                    <Input placeholder="Enter your full name" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -107,67 +97,9 @@ const Register = () => {
               name="email"
               render={({ field }) => (
                 <FormItem>
-                  <FormLabel>Email</FormLabel>
+                  <FormLabel>Email Address</FormLabel>
                   <FormControl>
-                    <Input placeholder="you@example.com" {...field} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="password"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Password</FormLabel>
-                  <FormControl>
-                    <div className="relative">
-                      <Input 
-                        type={showPassword ? "text" : "password"} 
-                        placeholder="••••••••" 
-                        {...field} 
-                      />
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="absolute right-2 top-1/2 transform -translate-y-1/2"
-                        onClick={() => setShowPassword(!showPassword)}
-                      >
-                        {showPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                      </Button>
-                    </div>
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              )}
-            />
-            
-            <FormField
-              control={form.control}
-              name="confirmPassword"
-              render={({ field }) => (
-                <FormItem>
-                  <FormLabel>Confirm Password</FormLabel>
-                  <FormControl>
-                    <div className="relative">
-                      <Input 
-                        type={showConfirmPassword ? "text" : "password"} 
-                        placeholder="••••••••" 
-                        {...field} 
-                      />
-                      <Button
-                        type="button"
-                        variant="ghost"
-                        size="icon"
-                        className="absolute right-2 top-1/2 transform -translate-y-1/2"
-                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
-                      >
-                        {showConfirmPassword ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
-                      </Button>
-                    </div>
+                    <Input placeholder="Enter your email" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
@@ -175,7 +107,7 @@ const Register = () => {
             />
             
             <Button type="submit" className="w-full">
-              Sign up
+              Get Started
             </Button>
             
             <div className="text-center text-sm">

@@ -2,6 +2,7 @@
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { ArrowRight, Sparkles } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 const HeroContent = () => {
   return (
@@ -30,16 +31,22 @@ const HeroContent = () => {
         <Button 
           size="lg" 
           className="bg-gray-900 hover:bg-gray-800 dark:bg-white dark:hover:bg-gray-100 dark:text-gray-900 text-white px-8 py-4 text-lg rounded-2xl font-semibold h-14 shadow-lg"
+          asChild
         >
-          Find Sponsors
-          <ArrowRight className="ml-2 h-5 w-5" />
+          <Link to="/register">
+            Find Sponsors
+            <ArrowRight className="ml-2 h-5 w-5" />
+          </Link>
         </Button>
         <Button 
           variant="outline" 
           size="lg" 
           className="border-2 border-gray-300 dark:border-gray-600 text-gray-900 dark:text-white hover:bg-gray-50 dark:hover:bg-gray-800 px-8 py-4 text-lg rounded-2xl font-semibold h-14"
+          asChild
         >
-          Become a Sponsor
+          <Link to="/register">
+            Become a Sponsor
+          </Link>
         </Button>
       </div>
 
